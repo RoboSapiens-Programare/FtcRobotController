@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.opmode.driver;
+package org.firstinspires.ftc.teamcode.drive.opmode;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsAnalogOpticalDistanceSensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cCompassSensor;
