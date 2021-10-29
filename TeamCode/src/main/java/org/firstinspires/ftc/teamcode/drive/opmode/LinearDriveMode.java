@@ -28,29 +28,29 @@ public class LinearDriveMode extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
-            if (gamepad1.a) {
-                robot.prototipBrat.ridicaBrat();
-            }
-
-            if (gamepad1.y) {
-                robot.prototipBrat.coboaraBrat();
-            }
-
-            if (gamepad1.left_trigger > 0)
-                robot.prototipBrat.miscaFata(gamepad1.left_trigger);
-            else if (gamepad1.right_trigger > 0)
-                robot.prototipBrat.miscaSpate(gamepad1.right_trigger);
-            else {
-                robot.prototipBrat.stop();
-            }
-
-            if(gamepad1.x) {
-                robot.prototipBrat.inchideGheara();
-            }
-            if(gamepad1.b) {
-                robot.prototipBrat.deschideGheara();
-            }
-            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_y));
+//            if (gamepad1.a) {
+//                robot.prototipBrat.ridicaBrat();
+//            }
+//
+//            if (gamepad1.y) {
+//                robot.prototipBrat.coboaraBrat();
+//            }
+//
+//            if (gamepad1.left_trigger > 0)
+//                robot.prototipBrat.miscaFata(gamepad1.left_trigger);
+//            else if (gamepad1.right_trigger > 0)
+//                robot.prototipBrat.miscaSpate(gamepad1.right_trigger);
+//            else {
+//                robot.prototipBrat.stop();
+//            }
+//
+//            if(gamepad1.x) {
+//                robot.prototipBrat.inchideGheara();
+//            }
+//            if(gamepad1.b) {
+//                robot.prototipBrat.deschideGheara();
+//            }
+            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }
     }
 }
