@@ -28,6 +28,9 @@ public class LinearDriveMode extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
+
+//            Prototip Brat:
+
 //            if (gamepad1.a) {
 //                robot.prototipBrat.ridicaBrat();
 //            }
@@ -50,6 +53,19 @@ public class LinearDriveMode extends LinearOpMode {
 //            if(gamepad1.b) {
 //                robot.prototipBrat.deschideGheara();
 //            }
+//
+            if(gamepad2.left_trigger > 0) robot.prototipSweeper.miscaFata(gamepad2.left_trigger);
+            else if (gamepad2.right_trigger > 0) robot.prototipSweeper.miscaSpate(gamepad2.right_trigger);
+            else robot.prototipSweeper.stop();
+
+            if(gamepad2.left_bumper) robot.prototipSweeper.sweepFata();
+            else if(gamepad2.right_bumper) robot.prototipSweeper.stopSweep();
+            else robot.prototipSweeper.stopSweep();
+
+            if (gamepad1.a) robot.prototipSweeper.ridicaBrat();
+            if (gamepad1.y) robot.prototipSweeper.coboaraBrat();
+            else robot.prototipSweeper.stopServo();
+
             robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }
     }
