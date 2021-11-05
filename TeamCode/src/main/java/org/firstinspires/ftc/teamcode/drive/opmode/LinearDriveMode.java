@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
-import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.drive.Robot;
@@ -54,19 +53,19 @@ public class LinearDriveMode extends LinearOpMode {
 //                robot.prototipBrat.deschideGheara();
 //            }
 //
-            if(gamepad2.left_trigger > 0) robot.prototipSweeper.miscaFata(gamepad2.left_trigger);
-            else if (gamepad2.right_trigger > 0) robot.prototipSweeper.miscaSpate(gamepad2.right_trigger);
-            else robot.prototipSweeper.stop();
+            if(gamepad2.left_trigger > 0) robot.prototipSweeper.bratFata(gamepad2.left_trigger);
+            else if (gamepad2.right_trigger > 0) robot.prototipSweeper.bratSpate(gamepad2.right_trigger);
+            else robot.prototipSweeper.stopBrat();
 
             if(gamepad2.left_bumper) robot.prototipSweeper.sweepFata();
-            else if(gamepad2.right_bumper) robot.prototipSweeper.stopSweep();
+            else if(gamepad2.right_bumper) robot.prototipSweeper.sweepSpate();
             else robot.prototipSweeper.stopSweep();
 
-            if (gamepad1.a) robot.prototipSweeper.ridicaBrat();
-            if (gamepad1.y) robot.prototipSweeper.coboaraBrat();
-            else robot.prototipSweeper.stopServo();
+            if (gamepad2.a) robot.prototipSweeper.ridicaBrat();
+            if (gamepad2.y) robot.prototipSweeper.coboaraBrat();
+            else robot.prototipSweeper.stopServo(); 
 
-            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
+            //robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }
     }
 }

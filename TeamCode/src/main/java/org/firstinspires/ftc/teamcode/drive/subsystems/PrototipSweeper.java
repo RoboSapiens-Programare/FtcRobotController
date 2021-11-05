@@ -35,18 +35,18 @@ public class PrototipSweeper {
     }
 
     public void ridicaBrat(){
-        servoBrat.setDirection(Servo.Direction.FORWARD);
+        servoBrat.setPosition(0.5);
     }public void coboaraBrat(){
-        servoBrat.setDirection(Servo.Direction.REVERSE);
+        servoBrat.setPosition(0);
     }public void stopServo(){
         servoBrat.setPosition(servoBrat.getPosition());
     }
 
-    public void miscaFata(double speed){
+    public void bratFata(double speed){
         motorBrat.setPower(Math.min(speed, 0.9));
-    }public void miscaSpate(double speed){
+    }public void bratSpate(double speed){
         motorBrat.setPower(Math.min(-speed, 0.9));
-    }public void stop(){
+    }public void stopBrat(){
         motorBrat.setPower(0);
     }
 }
