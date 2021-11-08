@@ -23,7 +23,7 @@ public class PrototipSweeper {
         motorSweeper.setDirection(DcMotorSimple.Direction.FORWARD);
         motorSweeper.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        servoBrat.setPosition(0.75);
+        servoBrat.setPosition(0.125);
     }
 
     public void sweepFata(){
@@ -36,11 +36,11 @@ public class PrototipSweeper {
         motorSweeper.setPower(0);
     }
 
-    public void ridicaBrat(){
+    public void coboaraBrat(){
         servoBrat.setPosition(0.125);
     }
-    public void coboaraBrat(){
-        servoBrat.setPosition(1);
+    public void ridicaBrat(){
+        servoBrat.setPosition(0.95);
     }
     public void stopServo(){
         servoBrat.setPosition(servoBrat.getPosition());
