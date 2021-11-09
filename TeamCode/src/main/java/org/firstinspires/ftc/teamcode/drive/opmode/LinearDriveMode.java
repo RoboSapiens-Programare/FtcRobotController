@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.drive.Robot;
@@ -54,7 +55,7 @@ public class LinearDriveMode extends LinearOpMode {
 //            }
 
             //Prototip Sweeper:
-//
+
             if(gamepad2.left_trigger > 0) robot.prototipSweeper.bratFata(gamepad2.left_trigger);
             else if (gamepad2.right_trigger > 0) robot.prototipSweeper.bratSpate(gamepad2.right_trigger);
             else robot.prototipSweeper.stopBrat();
@@ -67,8 +68,12 @@ public class LinearDriveMode extends LinearOpMode {
             if (gamepad2.a) robot.prototipSweeper.coboaraBrat();
             else robot.prototipSweeper.stopServo();
 
+            //Carousel:
+
             if(gamepad2.b) robot.prototipCarousel.spin();
             else robot.prototipCarousel.stopSpin();
+
+            //Drive:
 
 //            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }
