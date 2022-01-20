@@ -63,8 +63,8 @@ public class LinearDriveMode extends LinearOpMode {
 //            else if(gamepad2.right_bumper) robot.prototipSweeper.sweepSpate();
 //            else robot.prototipSweeper.stopSweep();
 
-            if (gamepad2.a) robot.prototipSweeper.ridicaBrat();
-            else robot.prototipSweeper.stopServo();
+//            if (gamepad2.a) robot.prototipSweeper.ridicaBrat();
+//            else robot.prototipSweeper.stopServo();
 
 //              Carousel:
 //
@@ -74,6 +74,15 @@ public class LinearDriveMode extends LinearOpMode {
 //            Drive:
 
 //            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
+
+
+//            Sweeeper boboci
+
+//            if(gamepad2.y)
+//                robot.sweeperBoboci.ridicaBrat();
+//            if(gamepad2.a)
+//                robot.sweeperBoboci.coboaraBrat();
+
         }
     }
 }
