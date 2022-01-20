@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
-import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.drive.Robot;
@@ -30,7 +29,7 @@ public class LinearDriveMode extends LinearOpMode {
         while (opModeIsActive()) {
 
 //            Prototip Brat:
-
+//
 //            if (gamepad1.a) {
 //                robot.prototipBrat.ridicaBrat();
 //            }
@@ -54,26 +53,25 @@ public class LinearDriveMode extends LinearOpMode {
 //                robot.prototipBrat.deschideGheara();
 //            }
 
-            //Prototip Sweeper:
+//            Prototip Sweeper:
 
-            if(gamepad2.left_trigger > 0) robot.prototipSweeper.bratFata(gamepad2.left_trigger);
-            else if (gamepad2.right_trigger > 0) robot.prototipSweeper.bratSpate(gamepad2.right_trigger);
-            else robot.prototipSweeper.stopBrat();
+//            if(gamepad2.left_trigger > 0) robot.prototipSweeper.bratFata(gamepad2.left_trigger);
+//            else if (gamepad2.right_trigger > 0) robot.prototipSweeper.bratSpate(gamepad2.right_trigger);
+//            else robot.prototipSweeper.stopBrat();
+//
+//            if(gamepad2.left_bumper) robot.prototipSweeper.sweepFata();
+//            else if(gamepad2.right_bumper) robot.prototipSweeper.sweepSpate();
+//            else robot.prototipSweeper.stopSweep();
 
-            if(gamepad2.left_bumper) robot.prototipSweeper.sweepFata();
-            else if(gamepad2.right_bumper) robot.prototipSweeper.sweepSpate();
-            else robot.prototipSweeper.stopSweep();
-
-            if (gamepad2.y) robot.prototipSweeper.ridicaBrat();
-            if (gamepad2.a) robot.prototipSweeper.coboaraBrat();
+            if (gamepad2.a) robot.prototipSweeper.ridicaBrat();
             else robot.prototipSweeper.stopServo();
 
-            //Carousel:
+//              Carousel:
+//
+//            if(gamepad2.b) robot.prototipCarousel.spin();
+//            else robot.prototipCarousel.stopSpin();
 
-            if(gamepad2.b) robot.prototipCarousel.spin();
-            else robot.prototipCarousel.stopSpin();
-
-            //Drive:
+//            Drive:
 
 //            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }

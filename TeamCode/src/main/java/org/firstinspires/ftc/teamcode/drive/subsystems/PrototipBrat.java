@@ -22,7 +22,6 @@ public class PrototipBrat {
         servoBrat.setPosition(1);
 
         servoGheara.setPosition(1);
-
     }
 
     public void miscaFata(double speed) {
