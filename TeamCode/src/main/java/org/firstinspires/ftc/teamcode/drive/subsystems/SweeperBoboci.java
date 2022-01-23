@@ -47,9 +47,9 @@ public class SweeperBoboci {
     }
 
     // TODO: AFLAT NR TICK-URI PT RIDICARE
-    public void ridicaAutomat(double speed){
+    public void ridicaAutomat(){
         ticks = motorBrat.getCurrentPosition();
-        while(ticks != ) {
+        while(ticks <=  ) {
             motorBrat.setPower(0.5);
             ticks = motorBrat.getCurrentPosition();
         }

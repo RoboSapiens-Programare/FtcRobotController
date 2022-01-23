@@ -48,6 +48,7 @@ public class PrototipSweeper {
         servoBrat2.setPosition(0.9);
     }
 
+
 //    public void bratFata(double speed){
 //        motorBrat.setPower(Math.min(speed, 0.9));
 //    }public void bratSpate(double speed){
