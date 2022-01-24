@@ -35,27 +35,17 @@ public class SweeperBoboci {
         servoBrat2.setPosition(0.1);
     }
 
-    public void coboaraBrat() {
-        if(servoBrat.getPosition()==0.7) {
-            servoBrat.setPosition(0.1);
-            servoBrat2.setPosition(0.9);
-        }
-        else{
-            servoBrat.setPosition(0.7);
-            servoBrat2.setPosition(0.3);
-        }
-    }
+
 
     // TODO: AFLAT NR TICK-URI PT RIDICARE
     public void ridicaAutomat(){
         ticks = motorBrat.getCurrentPosition();
-        while(ticks <=  ) {
-            motorBrat.setPower(0.5);
-            ticks = motorBrat.getCurrentPosition();
-        }
+//
         ridicaBrat();
 
     }
+
+
     public void aspirare(double speed){
         motorSweeper.setPower(0.9);
     }
