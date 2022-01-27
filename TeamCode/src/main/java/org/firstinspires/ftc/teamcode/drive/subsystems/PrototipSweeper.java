@@ -6,10 +6,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class PrototipSweeper {
-    private DcMotor motorBrat;
-    private DcMotor motorSweeper;
-    private Servo servoBrat;
-    private Servo servoBrat2;
+    public DcMotor motorBrat;
+    public DcMotor motorSweeper;
+    public Servo servoBrat;
+    public Servo servoBrat2;
 
     public PrototipSweeper(HardwareMap hardwareMap){
         motorBrat = hardwareMap.dcMotor.get("motorBrat");
@@ -50,11 +50,11 @@ public class PrototipSweeper {
 
 
     public void ridicaBrat(double speed){
-        motorBrat.setPower(Math.min(speed, 0.9));
+        motorBrat.setPower(Math.min(speed, 0.5));
     }
 
     public void bratSpate(double speed){
-        motorBrat.setPower(Math.min(-speed, 0.9));
+        motorBrat.setPower(Math.max(-speed, -0.5));
     }
 
     public void stopBrat(){

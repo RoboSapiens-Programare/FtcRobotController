@@ -52,6 +52,14 @@ public class LinearDriveMode extends LinearOpMode {
             if(gamepad1.right_bumper){
                 robot.prototipSweeper.sweepOut();
             }
+            if(gamepad2.right_trigger>0)
+            {
+                robot.prototipSweeper.ridicaBrat(gamepad2.right_trigger);
+            }
+            if(gamepad2.left_trigger>0)
+            {
+                robot.prototipSweeper.bratSpate(gamepad2.left_trigger);
+            }
 
 //            Carousel:
 //

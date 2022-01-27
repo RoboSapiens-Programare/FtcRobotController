@@ -5,10 +5,9 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.drive.PoseStorage;
-import org.firstinspires.ftc.teamcode.drive.Subsystem;
-import org.firstinspires.ftc.teamcode.drive.localization.vision.RingStackDeterminationPipeline;
-import org.firstinspires.ftc.teamcode.drive.tank.Robot;
+//import org.firstinspires.ftc.teamcode.drive.PoseStorage;
+//import org.firstinspires.ftc.teamcode.drive.Subsystem;
+import org.firstinspires.ftc.teamcode.drive.Robot;
 
 @Autonomous(name="Autonomie Standard", group = "autonomous")
 public class AutonomousMain extends LinearOpMode {
@@ -28,21 +27,21 @@ public class AutonomousMain extends LinearOpMode {
 
     private final Pose2d throwWobble = new Pose2d(-0.2*FOAM_TILE_INCH, -1.3 * FOAM_TILE_INCH, Math.toRadians(0));
 
-    private RingStackDeterminationPipeline.RingPosition numberOfRing = RingStackDeterminationPipeline.RingPosition.NONE;
+//    private RingStackDeterminationPipeline.RingPosition numberOfRing = RingStackDeterminationPipeline.RingPosition.NONE;
 
     public void initAutonomous(){
         telemetry.addData(">", "Initializing...");
         telemetry.update();
 
         robot = new Robot(hardwareMap);
-        
+
         // initiazilare;
 
         robot.prototipSweeper.servoBrat.setPosition(0.3);
 
         robot.prototipSweeper.servoBrat2.setPosition(0.7);
 
-        robot.openCV.start();
+//        robot.openCV.start();
 
             while (robot.isInitialize() && opModeIsActive()) {
                 idle();
@@ -51,6 +50,11 @@ public class AutonomousMain extends LinearOpMode {
             telemetry.addData(">", "Initialized");
             telemetry.update();
         }
+
+    @Override
+    public void runOpMode() throws InterruptedException {
+
+    }
         /*  task 1: plasat obiect pe shipping hub
             task 2: mutat ratuste de pe carusel
             task 3: parcat in patrat/warehouse
