@@ -53,7 +53,7 @@ public class PrototipSweeper {
         motorBrat.setPower(Math.min(speed, 0.5));
     }
 
-    public void bratSpate(double speed){
+    public void coboaraBrat(double speed){
         motorBrat.setPower(Math.max(-speed, -0.5));
     }
 

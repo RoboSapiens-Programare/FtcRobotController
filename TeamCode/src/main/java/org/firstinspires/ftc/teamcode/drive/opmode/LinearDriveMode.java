@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.drive.Robot;
@@ -58,17 +59,17 @@ public class LinearDriveMode extends LinearOpMode {
             }
             if(gamepad2.left_trigger>0)
             {
-                robot.prototipSweeper.bratSpate(gamepad2.left_trigger);
+                robot.prototipSweeper.coboaraBrat(gamepad2.left_trigger);
             }
 
 //            Carousel:
 //
-//            if(gamepad2.dpad) robot.prototipCarousel.spin();
-//            else robot.prototipCarousel.stopSpin();
+            if(gamepad1.right_bumper) robot.prototipCarousel.spin();
+            else robot.prototipCarousel.stopSpin();
 //
 //            Drive:
 //
-//            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
+            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }
     }
 }
