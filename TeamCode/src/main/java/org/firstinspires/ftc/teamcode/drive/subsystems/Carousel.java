@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class PrototipCarousel {
+public class Carousel {
     private DcMotor carousel;
-    public PrototipCarousel(HardwareMap hardwareMap){
+    public Carousel(HardwareMap hardwareMap){
         carousel = hardwareMap.dcMotor.get("carousel");
 
         carousel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -16,7 +16,7 @@ public class PrototipCarousel {
     }
 
     public void spin(){
-        carousel.setPower(0.5);
+        carousel.setPower(0.7);
     }
 
     public void stopSpin(){

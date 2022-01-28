@@ -5,15 +5,17 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class PrototipSweeper {
+import org.firstinspires.ftc.teamcode.drive.DriveConstants;
+
+public class Sweeper {
     public DcMotor motorBrat;
     public DcMotor motorSweeper;
     public Servo servoBrat;
     public Servo servoBrat2;
 
-    public PrototipSweeper(HardwareMap hardwareMap){
+    public Sweeper(HardwareMap hardwareMap){
         motorBrat = hardwareMap.dcMotor.get("motorBrat");
-//        motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
+        motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
         servoBrat = hardwareMap.servo.get("servoBrat");
         servoBrat2 = hardwareMap.servo.get("servoBrat2");
 
@@ -66,7 +68,7 @@ public class PrototipSweeper {
 
 
     public void autoRidicare(){
-        motorBrat.setTargetPosition(420);
+        motorBrat.setTargetPosition((int)(new DriveConstants().TICKS_PER_REV * 1));
         servoBrat.setPosition(0.7);
         servoBrat2.setPosition(0.3);
     }
