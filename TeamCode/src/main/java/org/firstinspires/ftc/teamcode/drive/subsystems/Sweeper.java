@@ -31,11 +31,8 @@ public class Sweeper {
         servoBrat2.setPosition(1);
     }
 
-    public void sweepIn(){
+    public void sweep(){
         motorSweeper.setPower(1);
-    }
-    public void sweepOut(){
-        motorSweeper.setPower(-1);
     }
     public void stopSweep(){
         motorSweeper.setPower(0);
@@ -68,19 +65,19 @@ public class Sweeper {
 
 
     public void autoRidicare(){
-        motorBrat.setTargetPosition((int)(new DriveConstants().TICKS_PER_REV * 1));
+        motorBrat.setTargetPosition(420 * 1);
         servoBrat.setPosition(0.7);
         servoBrat2.setPosition(0.3);
     }
 
     public void  coboaraLevel(){
-        servoBrat.setPosition(servoBrat.getPosition() + 0.2);
-        servoBrat2.setPosition(servoBrat2.getPosition() - 0.2);
+        servoBrat.setPosition(Math.max(servoBrat.getPosition() + 0.2, 1));
+        servoBrat2.setPosition(Math.max(servoBrat2.getPosition() - 0.2, 0));
     }
 
     public void ridicaLevel(){
-        servoBrat.setPosition(servoBrat.getPosition() - 0.2);
-        servoBrat2.setPosition(servoBrat2.getPosition() + 0.2);
+        servoBrat.setPosition(Math.max(servoBrat.getPosition() - 0.2, 0));
+        servoBrat2.setPosition(Math.max(servoBrat2.getPosition() + 0.2, 1));
     }
 
     public void autoCoborare(){

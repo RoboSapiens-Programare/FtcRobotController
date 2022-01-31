@@ -47,11 +47,11 @@ public class LinearDriveMode extends LinearOpMode {
 //            }
 //
 //            if(gamepad1.left_bumper){
-//                robot.sweeper.sweepIn();
+//                robot.sweeper.sweep();
 //            }
 //
 //            if(gamepad1.right_bumper){
-//                robot.sweeper.sweepOut();
+//                robot.sweeper.sweep();
 //            }
 //            if(gamepad2.right_trigger>0)
 //            {
@@ -64,8 +64,8 @@ public class LinearDriveMode extends LinearOpMode {
 //            else
 //                robot.sweeper.stopBrat();
 //
-////            Carousel:
-////
+//            Carousel:
+//
 //            if(gamepad1.right_bumper) robot.carousel.spin();
 //            else robot.carousel.stopSpin();
 //
