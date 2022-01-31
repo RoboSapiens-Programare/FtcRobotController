@@ -8,14 +8,14 @@ import org.firstinspires.ftc.teamcode.drive.subsystems.Sweeper;
 
 public class Robot {
     private  boolean initialize;
-//    public Sweeper sweeper;
-//    public Carousel carousel;
+    public Sweeper sweeper;
+    public Carousel carousel;
     public MecanumDriveCh drive;
 
     public Robot (HardwareMap hardwareMap){
         initialize = true;
-//        sweeper = new Sweeper(hardwareMap);
-//        carousel = new Carousel(hardwareMap);
+        sweeper = new Sweeper(hardwareMap);
+        carousel = new Carousel(hardwareMap);
         drive = new MecanumDriveCh(hardwareMap);
         initialize = false;
     }

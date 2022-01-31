@@ -30,48 +30,46 @@ public class LinearDriveMode extends LinearOpMode {
         while (opModeIsActive()) {
 //            Prototip Sweeper:
 
-//            if(gamepad2.a){
-//                robot.sweeper.autoRidicare();
-//            }
-//
-//            if(gamepad2.dpad_up){
-//                robot.sweeper.ridicaLevel();
-//            }
-//
-//            if(gamepad2.dpad_down){
-//                robot.sweeper.coboaraLevel();
-//            }
-//
-//            if(gamepad2.b){
-//                robot.sweeper.autoCoborare();
-//            }
-//
-//            if(gamepad1.left_bumper){
-//                robot.sweeper.sweep();
-//            }
-//
-//            if(gamepad1.right_bumper){
-//                robot.sweeper.sweep();
-//            }
-//            if(gamepad2.right_trigger>0)
-//            {
-//                robot.sweeper.ridicaBrat(gamepad2.right_trigger);
-//            }
-//            else if(gamepad2.left_trigger>0)
-//            {
-//                robot.sweeper.coboaraBrat(gamepad2.left_trigger);
-//            }
-//            else
-//                robot.sweeper.stopBrat();
-//
+            if(gamepad2.a){
+                robot.sweeper.autoRidicare();
+            }
+
+            if(gamepad2.dpad_up){
+                robot.sweeper.ridicaLevel();
+            }
+
+            if(gamepad2.dpad_down){
+                robot.sweeper.coboaraLevel();
+            }
+
+            if(gamepad2.b){
+                robot.sweeper.autoCoborare();
+            }
+
+
+            if(gamepad2.left_bumper){
+                robot.sweeper.sweep();
+            }else robot.sweeper.stopSweep();
+
+            if(gamepad2.right_trigger>0)
+            {
+                robot.sweeper.ridicaBrat(gamepad2.right_trigger);
+            }
+            else if(gamepad2.left_trigger>0)
+            {
+                robot.sweeper.coboaraBrat(gamepad2.left_trigger);
+            }
+            else
+                robot.sweeper.stopBrat();
+
 //            Carousel:
-//
-//            if(gamepad1.right_bumper) robot.carousel.spin();
-//            else robot.carousel.stopSpin();
-//
+
+            if(gamepad2.right_bumper) robot.carousel.spin();
+            else robot.carousel.stopSpin();
+
 //            Drive:
-//
-            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
+
+             robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }
     }
 }

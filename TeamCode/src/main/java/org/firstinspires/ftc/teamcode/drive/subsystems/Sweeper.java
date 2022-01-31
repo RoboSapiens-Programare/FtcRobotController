@@ -14,7 +14,7 @@ public class Sweeper {
     public Servo servoBrat2;
 
     public Sweeper(HardwareMap hardwareMap){
-        motorBrat = hardwareMap.dcMotor.get("motorBrat");
+        motorBrat = hardwareMap.dcMotor.get("motorBratEnervant");
         motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
         servoBrat = hardwareMap.servo.get("servoBrat");
         servoBrat2 = hardwareMap.servo.get("servoBrat2");
@@ -65,19 +65,22 @@ public class Sweeper {
 
 
     public void autoRidicare(){
-        motorBrat.setTargetPosition(420 * 1);
+        motorBrat.setTargetPosition(630);
         servoBrat.setPosition(0.7);
         servoBrat2.setPosition(0.3);
     }
 
     public void  coboaraLevel(){
-        servoBrat.setPosition(Math.max(servoBrat.getPosition() + 0.2, 1));
-        servoBrat2.setPosition(Math.max(servoBrat2.getPosition() - 0.2, 0));
+//        double chestie = servoBrat.getPosition();
+//        servoBrat.setPosition(chestie + 0.2);
+//
+//        double chestie2 = servoBrat2.getPosition();
+//        servoBrat2.setPosition(chestie2 - 0.2);
     }
 
     public void ridicaLevel(){
-        servoBrat.setPosition(Math.max(servoBrat.getPosition() - 0.2, 0));
-        servoBrat2.setPosition(Math.max(servoBrat2.getPosition() + 0.2, 1));
+//        servoBrat.setPosition(servoBrat.getPosition() - 0.2);
+//        servoBrat2.setPosition(servoBrat2.getPosition() + 0.2);
     }
 
     public void autoCoborare(){
