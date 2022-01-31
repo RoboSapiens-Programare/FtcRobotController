@@ -37,9 +37,9 @@ public class AutonomousMain extends LinearOpMode {
 
         // initiazilare;
 
-        robot.prototipSweeper.servoBrat.setPosition(0.3);
-
-        robot.prototipSweeper.servoBrat2.setPosition(0.7);
+//        robot.sweeper.servoBrat.setPosition(0.3);
+//
+//        robot.sweeper.servoBrat2.setPosition(0.7);
 
 //        robot.openCV.start();
 

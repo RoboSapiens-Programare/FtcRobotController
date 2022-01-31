@@ -5,15 +5,17 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class PrototipSweeper {
+import org.firstinspires.ftc.teamcode.drive.DriveConstants;
+
+public class Sweeper {
     public DcMotor motorBrat;
     public DcMotor motorSweeper;
     public Servo servoBrat;
     public Servo servoBrat2;
 
-    public PrototipSweeper(HardwareMap hardwareMap){
-        motorBrat = hardwareMap.dcMotor.get("motorBrat");
-//        motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
+    public Sweeper(HardwareMap hardwareMap){
+        motorBrat = hardwareMap.dcMotor.get("motorBratEnervant");
+        motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
         servoBrat = hardwareMap.servo.get("servoBrat");
         servoBrat2 = hardwareMap.servo.get("servoBrat2");
 
@@ -29,11 +31,8 @@ public class PrototipSweeper {
         servoBrat2.setPosition(1);
     }
 
-    public void sweepIn(){
+    public void sweep(){
         motorSweeper.setPower(1);
-    }
-    public void sweepOut(){
-        motorSweeper.setPower(-1);
     }
     public void stopSweep(){
         motorSweeper.setPower(0);
@@ -66,19 +65,22 @@ public class PrototipSweeper {
 
 
     public void autoRidicare(){
-        motorBrat.setTargetPosition(420);
+        motorBrat.setTargetPosition(630);
         servoBrat.setPosition(0.7);
         servoBrat2.setPosition(0.3);
     }
 
     public void  coboaraLevel(){
-        servoBrat.setPosition(servoBrat.getPosition() + 0.2);
-        servoBrat2.setPosition(servoBrat2.getPosition() - 0.2);
+//        double chestie = servoBrat.getPosition();
+//        servoBrat.setPosition(chestie + 0.2);
+//
+//        double chestie2 = servoBrat2.getPosition();
+//        servoBrat2.setPosition(chestie2 - 0.2);
     }
 
     public void ridicaLevel(){
-        servoBrat.setPosition(servoBrat.getPosition() - 0.2);
-        servoBrat2.setPosition(servoBrat2.getPosition() + 0.2);
+//        servoBrat.setPosition(servoBrat.getPosition() - 0.2);
+//        servoBrat2.setPosition(servoBrat2.getPosition() + 0.2);
     }
 
     public void autoCoborare(){

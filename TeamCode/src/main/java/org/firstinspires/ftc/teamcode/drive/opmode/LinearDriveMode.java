@@ -31,45 +31,45 @@ public class LinearDriveMode extends LinearOpMode {
 //            Prototip Sweeper:
 
             if(gamepad2.a){
-                robot.prototipSweeper.autoRidicare();
+                robot.sweeper.autoRidicare();
             }
 
             if(gamepad2.dpad_up){
-                robot.prototipSweeper.ridicaLevel();
+                robot.sweeper.ridicaLevel();
             }
 
             if(gamepad2.dpad_down){
-                robot.prototipSweeper.coboaraLevel();
+                robot.sweeper.coboaraLevel();
             }
 
             if(gamepad2.b){
-                robot.prototipSweeper.autoCoborare();
+                robot.sweeper.autoCoborare();
             }
 
-            if(gamepad1.left_bumper){
-                robot.prototipSweeper.sweepIn();
-            }
 
-            if(gamepad1.right_bumper){
-                robot.prototipSweeper.sweepOut();
-            }
+            if(gamepad2.left_bumper){
+                robot.sweeper.sweep();
+            }else robot.sweeper.stopSweep();
+
             if(gamepad2.right_trigger>0)
             {
-                robot.prototipSweeper.ridicaBrat(gamepad2.right_trigger);
+                robot.sweeper.ridicaBrat(gamepad2.right_trigger);
             }
-            if(gamepad2.left_trigger>0)
+            else if(gamepad2.left_trigger>0)
             {
-                robot.prototipSweeper.coboaraBrat(gamepad2.left_trigger);
+                robot.sweeper.coboaraBrat(gamepad2.left_trigger);
             }
+            else
+                robot.sweeper.stopBrat();
 
 //            Carousel:
-//
-            if(gamepad1.right_bumper) robot.prototipCarousel.spin();
-            else robot.prototipCarousel.stopSpin();
-//
+
+            if(gamepad2.right_bumper) robot.carousel.spin();
+            else robot.carousel.stopSpin();
+
 //            Drive:
-//
-            robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, gamepad1.left_stick_x, -gamepad1.right_stick_x));
+
+             robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }
     }
 }
