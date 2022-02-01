@@ -16,6 +16,7 @@ public class LinearDriveMode extends LinearOpMode {
         telemetry.update();
 
         robot = new Robot(hardwareMap);
+        int timer = 2000;
 
         while (robot.isInitialize() && opModeIsActive()) {
             idle();
@@ -30,41 +31,31 @@ public class LinearDriveMode extends LinearOpMode {
         while (opModeIsActive()) {
 //            Prototip Sweeper:
 
-            if(gamepad2.a){
-                robot.sweeper.autoRidicare();
-            }
+            if(gamepad2.a) robot.sweeper.autoRidicare();
+            if(gamepad2.b) robot.sweeper.autoCoborare();
 
-            if(gamepad2.dpad_up){
-                robot.sweeper.ridicaLevel();
-            }
+            if(gamepad2.dpad_up) robot.sweeper.upperLevel();
+            else if(gamepad2.dpad_down) robot.sweeper.lowerLevel();
+            else if(gamepad2.dpad_left) robot.sweeper.midLevel();
 
-            if(gamepad2.dpad_down){
-                robot.sweeper.coboaraLevel();
-            }
+            if(gamepad2.left_bumper) robot.sweeper.sweep();
+            else if(gamepad2.right_bumper) robot.sweeper.reverseSweep();
+            else robot.sweeper.stopSweep();
 
-            if(gamepad2.b){
-                robot.sweeper.autoCoborare();
-            }
-
-
-            if(gamepad2.left_bumper){
-                robot.sweeper.sweep();
-            }else robot.sweeper.stopSweep();
-
-            if(gamepad2.right_trigger>0)
-            {
-                robot.sweeper.ridicaBrat(gamepad2.right_trigger);
-            }
-            else if(gamepad2.left_trigger>0)
-            {
-                robot.sweeper.coboaraBrat(gamepad2.left_trigger);
-            }
-            else
-                robot.sweeper.stopBrat();
+//            if(gamepad2.right_trigger>0)
+//            {
+//                robot.sweeper.ridicaBrat(gamepad2.right_trigger);
+//            }
+//            else if(gamepad2.left_trigger>0)
+//            {
+//                robot.sweeper.coboaraBrat(gamepad2.left_trigger);
+//            }
+//            else
+//                robot.sweeper.stopBrat();
 
 //            Carousel:
 
-            if(gamepad2.right_bumper) robot.carousel.spin();
+            if(gamepad2.x) robot.carousel.spin();
             else robot.carousel.stopSpin();
 
 //            Drive:

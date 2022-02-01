@@ -19,7 +19,8 @@ public class Sweeper {
         servoBrat = hardwareMap.servo.get("servoBrat");
         servoBrat2 = hardwareMap.servo.get("servoBrat2");
 
-        motorBrat.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorBrat.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBrat.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBrat.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -34,6 +35,9 @@ public class Sweeper {
     public void sweep(){
         motorSweeper.setPower(1);
     }
+    public void reverseSweep(){
+        motorSweeper.setPower(-1);
+    }
     public void stopSweep(){
         motorSweeper.setPower(0);
     }
@@ -47,7 +51,6 @@ public class Sweeper {
         servoBrat2.setPosition(1);
     }
 
-
     public void ridicaBrat(double speed){
         motorBrat.setPower(Math.min(speed, 0.5));
     }
@@ -60,32 +63,32 @@ public class Sweeper {
         motorBrat.setPower(0);
     }
 
-
-
-
-
     public void autoRidicare(){
         motorBrat.setTargetPosition(630);
+        motorBrat.setPower(0.2);
         servoBrat.setPosition(0.7);
         servoBrat2.setPosition(0.3);
     }
 
-    public void  coboaraLevel(){
-//        double chestie = servoBrat.getPosition();
-//        servoBrat.setPosition(chestie + 0.2);
-//
-//        double chestie2 = servoBrat2.getPosition();
-//        servoBrat2.setPosition(chestie2 - 0.2);
-    }
-
-    public void ridicaLevel(){
-//        servoBrat.setPosition(servoBrat.getPosition() - 0.2);
-//        servoBrat2.setPosition(servoBrat2.getPosition() + 0.2);
-    }
-
     public void autoCoborare(){
         motorBrat.setTargetPosition(0);
+        motorBrat.setPower(-0.2);
         servoBrat.setPosition(0);
         servoBrat2.setPosition(1);
+    }
+
+    public void upperLevel(){
+        servoBrat.setPosition(0.9);
+        servoBrat2.setPosition(0.1);
+    }
+
+    public void midLevel(){
+        servoBrat.setPosition(0.6);
+        servoBrat2.setPosition(0.4);
+    }
+
+    public void lowerLevel(){
+        servoBrat.setPosition(0.3);
+        servoBrat2.setPosition(0.7);
     }
 }
