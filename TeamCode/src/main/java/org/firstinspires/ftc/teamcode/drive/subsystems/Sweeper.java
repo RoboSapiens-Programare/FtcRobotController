@@ -14,14 +14,14 @@ public class Sweeper {
     public Servo servoBrat2;
 
     public Sweeper(HardwareMap hardwareMap){
-        motorBrat = hardwareMap.dcMotor.get("motorBratEnervant");
+        motorBrat = hardwareMap.dcMotor.get("motorBrat");
         motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
         servoBrat = hardwareMap.servo.get("servoBrat");
         servoBrat2 = hardwareMap.servo.get("servoBrat2");
 
-        motorBrat.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorBrat.setDirection(DcMotorSimple.Direction.FORWARD);
+//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorBrat.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        motorBrat.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBrat.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorSweeper.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -42,21 +42,21 @@ public class Sweeper {
         motorSweeper.setPower(0);
     }
 
-    public void ridicaCuva(){
+    public void defaultPosition(){
         servoBrat.setPosition(0.7);
         servoBrat2.setPosition(0.3);
     }
-    public void stopServo(){
+    public void pickupPosition(){
         servoBrat.setPosition(0);
         servoBrat2.setPosition(1);
     }
 
     public void ridicaBrat(double speed){
-        motorBrat.setPower(Math.min(speed, 0.5));
+        motorBrat.setPower(Math.min(speed, 1));
     }
 
     public void coboaraBrat(double speed){
-        motorBrat.setPower(Math.max(-speed, -0.5));
+        motorBrat.setPower(Math.max(-speed, -1));
     }
 
     public void stopBrat(){
@@ -64,30 +64,23 @@ public class Sweeper {
     }
 
     public void autoRidicare(){
-        motorBrat.setTargetPosition(630);
-        motorBrat.setPower(0.2);
-        servoBrat.setPosition(0.7);
-        servoBrat2.setPosition(0.3);
+//        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() + 200);
+//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        motorBrat.setPower(0.2);
     }
 
     public void autoCoborare(){
-        motorBrat.setTargetPosition(0);
-        motorBrat.setPower(-0.2);
-        servoBrat.setPosition(0);
-        servoBrat2.setPosition(1);
+//        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() - 200);
+//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        motorBrat.setPower(-0.2);
     }
 
-    public void upperLevel(){
-        servoBrat.setPosition(0.9);
-        servoBrat2.setPosition(0.1);
-    }
-
-    public void midLevel(){
+    public void thirdLevel(){
         servoBrat.setPosition(0.6);
         servoBrat2.setPosition(0.4);
     }
 
-    public void lowerLevel(){
+    public void lowerLevels(){
         servoBrat.setPosition(0.3);
         servoBrat2.setPosition(0.7);
     }

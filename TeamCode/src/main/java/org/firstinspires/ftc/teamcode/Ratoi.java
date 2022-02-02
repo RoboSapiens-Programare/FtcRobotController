@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -29,11 +30,10 @@ public class Ratoi extends OpenCvPipeline {
         static final Rect LEFT_ROI = new Rect(
             new Point(0, 0),
             new Point()
-        )
+        );
 
         @Override
         public Mat processFrame(Mat input) {
-
+            return  new Mat();
         }
-    }
 }
