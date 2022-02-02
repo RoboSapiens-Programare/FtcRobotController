@@ -20,7 +20,7 @@ public class Ratoi extends OpenCvPipeline {
         Telemetry telemetry;
         Mat mat = new Mat();
         //TODO de aflat valoarea minima de galben dintr-un dreptunghi, fara ratoi
-        private static final PERCENT_COLOR_THRESHOLD = 0.2;
+        private static final double PERCENT_COLOR_THRESHOLD = 0.2;
         public enum Location {
             LEFT,
             CENTER,
@@ -42,7 +42,7 @@ public class Ratoi extends OpenCvPipeline {
 
         static final Rect RIGHT_ROI = new Rect(
             new Point (0, 0),
-            new point(0, 0)
+            new Point(0, 0)
         );
 
         @Override
@@ -78,7 +78,7 @@ public class Ratoi extends OpenCvPipeline {
             }
             else if(duckRight) {
                 location = Location.RIGHT;
-                telemtry.addData("Duck Location", "right");
+                telemetry.addData("Duck Location", "right");
             }
             else {
                 location = Location.NOT_FOUND;
@@ -87,5 +87,6 @@ public class Ratoi extends OpenCvPipeline {
             telemetry.update();
 
             Imgproc.cvtColor(mat, mat, Imgproc.COLOR_GRAY2RGB);
+            return mat;
         }
 }
