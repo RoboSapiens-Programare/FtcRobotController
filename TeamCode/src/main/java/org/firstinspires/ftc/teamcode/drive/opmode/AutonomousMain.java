@@ -86,24 +86,24 @@ public class AutonomousMain extends LinearOpMode {
 
 
         switch(ratoi.getLocation()) {
-            case LEFT:
+            case "LEFT":
             {
-                // TODO
+                telemetry.addData("Left:", "detecteaza");
                 break;
             }
-            case CENTER:
+            case "CENTER":
             {
-                // TODO
+                telemetry.addData("Center:", "detecteaza");
                 break;
             }
-            case RIGHT:
+            case "RIGHT":
             {
-                // TODO
+                telemetry.addData("Right", "detecteaza");
                 break;
             }
-            case NOT_FOUND:
+            case "NOT_FOUND":
             {
-                telemetry.addData("no esta bueno", "MURIM");
+                telemetry.addData("NOT_FOUND", "Eroare");
                 break;
             }
         }

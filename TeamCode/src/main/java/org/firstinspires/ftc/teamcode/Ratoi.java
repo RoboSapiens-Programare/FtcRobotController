@@ -29,7 +29,7 @@ public class Ratoi extends OpenCvPipeline {
             NOT_FOUND
         }
 
-        private Location location;
+        private String location;
 
         //TODO de gasit punctele pentru dreptunghiuri
         static final Rect LEFT_ROI = new Rect(
@@ -56,6 +56,7 @@ public class Ratoi extends OpenCvPipeline {
             Scalar highHSV = new Scalar(32, 255, 255);
 
             Core.inRange(mat, lowHSV, highHSV, mat);
+
             Mat left = mat.submat(LEFT_ROI);
             Mat center = mat.submat(CENTER_ROI);
             Mat right = mat.submat(RIGHT_ROI);
@@ -80,19 +81,19 @@ public class Ratoi extends OpenCvPipeline {
             boolean duckRight = rightValue > PERCENT_COLOR_THRESHOLD;
 
             if(duckLeft) {
-                location = Location.LEFT;
+                location = "LEFT";
                 telemetry.addData("Duck Location", "left");
             }
             else if(duckCenter) {
-                location = Location.CENTER;
+                location = "CENTER";
                 telemetry.addData("Duck Location", "center");
             }
             else if(duckRight) {
-                location = Location.RIGHT;
+                location = "RIGHT";
                 telemetry.addData("Duck Location", "right");
             }
             else {
-                location = Location.NOT_FOUND;
+                location = "NOT_FOUND";
                 telemetry.addData("Duck Location", "not found");
             }
             telemetry.update();
@@ -102,13 +103,13 @@ public class Ratoi extends OpenCvPipeline {
             Scalar notRata = new Scalar(255, 0, 0);
             Scalar rata = new Scalar(0, 255, 0);
 
-            Imgproc.rectangle(mat, LEFT_ROI, location == Location.LEFT? rata:notRata);
-            Imgproc.rectangle(mat, CENTER_ROI, location == Location.CENTER? rata:notRata);
-            Imgproc.rectangle(mat, RIGHT_ROI, location == Location.RIGHT? rata:notRata);
+            Imgproc.rectangle(mat, LEFT_ROI, location == "LEFT"? rata:notRata);
+            Imgproc.rectangle(mat, CENTER_ROI, location == "CENTER"? rata:notRata);
+            Imgproc.rectangle(mat, RIGHT_ROI, location == "RIGHT"? rata:notRata);
 
             return mat;
         }
-        public Location getLocation() {
+        public String getLocation() {
             return location;
         }
 
