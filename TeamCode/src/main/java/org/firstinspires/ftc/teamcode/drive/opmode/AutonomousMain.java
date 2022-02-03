@@ -7,12 +7,18 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 //import org.firstinspires.ftc.teamcode.drive.PoseStorage;
 //import org.firstinspires.ftc.teamcode.drive.Subsystem;
+import org.firstinspires.ftc.teamcode.Ratoi;
 import org.firstinspires.ftc.teamcode.drive.Robot;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
+import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.openftc.easyopencv.OpenCvInternalCamera;
 
 @Autonomous(name="Autonomie Standard", group = "autonomous")
 public class AutonomousMain extends LinearOpMode {
 
     private Robot robot;
+    private Ratoi ratoi;
     public static int MAX_MILISECONDS = 2500;
     private static final double FOAM_TILE_INCH = 23.6;
     private double startAngle, wobbleSpeed;
@@ -27,7 +33,8 @@ public class AutonomousMain extends LinearOpMode {
 
     private final Pose2d throwWobble = new Pose2d(-0.2*FOAM_TILE_INCH, -1.3 * FOAM_TILE_INCH, Math.toRadians(0));
 
-//    private RingStackDeterminationPipeline.RingPosition numberOfRing = RingStackDeterminationPipeline.RingPosition.NONE;
+    OpenCvCamera webCam;
+
 
     public void initAutonomous(){
         telemetry.addData(">", "Initializing...");
@@ -43,7 +50,7 @@ public class AutonomousMain extends LinearOpMode {
 
 //        robot.openCV.start();
 
-            while (robot.isInitialize() && opModeIsActive()) {
+           while (robot.isInitialize() && opModeIsActive()) {
                 idle();
             }
 
@@ -54,9 +61,58 @@ public class AutonomousMain extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId",
+                "id", hardwareMap.appContext.getPackageName());
+        webCam = OpenCvCameraFactory.getInstance()
+                .createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
+
+        Ratoi detector = new Ratoi(telemetry);
+
+        webCam.setPipeline(detector);
+        webCam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
+            @Override
+            public void onOpened() {
+                webCam.startStreaming(1280, 720, OpenCvCameraRotation.UPRIGHT);
+            }
+
+            @Override
+            public void onError(int errorCode) {
+
+            }
+        });
+
+        waitForStart();
+
+
+
+        switch(ratoi.getLocation()) {
+            case LEFT:
+            {
+                // TODO
+                break;
+            }
+            case CENTER:
+            {
+                // TODO
+                break;
+            }
+            case RIGHT:
+            {
+                // TODO
+                break;
+            }
+            case NOT_FOUND:
+            {
+                telemetry.addData("no esta bueno", "MURIM");
+                break;
+            }
+        }
+
     }
-        /*  task 1: plasat obiect pe shipping hub
-            task 2: mutat ratuste de pe carusel
+
+        /* TODO task 1: plasat obiect pe shipping hub
+            task 2: dat jos ratusca de pe carusel
             task 3: parcat in patrat/warehouse
         */
+
 }
