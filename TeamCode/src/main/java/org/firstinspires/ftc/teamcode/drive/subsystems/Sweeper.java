@@ -28,8 +28,8 @@ public class Sweeper {
         motorSweeper.setDirection(DcMotorSimple.Direction.FORWARD);
         motorSweeper.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        servoBrat.setPosition(0);
-        servoBrat2.setPosition(1);
+        servoBrat.setPosition(0.7);
+        servoBrat2.setPosition(0.3);
     }
 
     public void sweep(){
@@ -49,6 +49,11 @@ public class Sweeper {
     public void pickupPosition(){
         servoBrat.setPosition(0);
         servoBrat2.setPosition(1);
+    }
+
+    public void midPosition(){
+        servoBrat.setPosition(0.3);
+        servoBrat2.setPosition(0.7);
     }
 
     public void ridicaBrat(double speed){
@@ -73,15 +78,5 @@ public class Sweeper {
 //        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() - 200);
 //        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 //        motorBrat.setPower(-0.2);
-    }
-
-    public void thirdLevel(){
-        servoBrat.setPosition(0.6);
-        servoBrat2.setPosition(0.4);
-    }
-
-    public void lowerLevels(){
-        servoBrat.setPosition(0.3);
-        servoBrat2.setPosition(0.7);
     }
 }
