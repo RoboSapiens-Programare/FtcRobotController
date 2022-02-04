@@ -1,50 +1,39 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
-import org.openftc.easyopencv.OpenCvCamera;
-import org.openftc.easyopencv.OpenCvCameraFactory;
-import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvPipeline;
 
 public class Ratoi extends OpenCvPipeline {
         Telemetry telemetry;
         Mat mat = new Mat();
+        private static final double WIDTH = 640;
+        private static final double HEIGHT = 480;
+
         //TODO de aflat valoarea minima de galben dintr-un dreptunghi, fara ratoi
         private static final double PERCENT_COLOR_THRESHOLD = 0.2;
 
-        public enum Location {
-            LEFT,
-            CENTER,
-            RIGHT,
-            NOT_FOUND
-        }
-
-        private String location;
+        private String location = "Ceva";
 
         //TODO de gasit punctele pentru dreptunghiuri
         static final Rect LEFT_ROI = new Rect(
             new Point(0, 0),
-            new Point(426.6, 720)
+            new Point(WIDTH / 3, HEIGHT)
         );
 
         static final Rect CENTER_ROI = new Rect(
-            new Point(426.6, 0),
-            new Point(853.2, 720)
+            new Point(WIDTH / 3, 0),
+            new Point(WIDTH / 3 * 2, HEIGHT)
         );
 
         static final Rect RIGHT_ROI = new Rect(
-            new Point (853.2, 0),
-            new Point(1280, 720)
+            new Point (WIDTH / 3 * 2, 0),
+            new Point(WIDTH, HEIGHT)
         );
 
         public Ratoi(Telemetry t) { telemetry = t; }
@@ -109,7 +98,7 @@ public class Ratoi extends OpenCvPipeline {
 
             return mat;
         }
-        public String getLocation() {
+        public String getLocation(){
             return location;
         }
 

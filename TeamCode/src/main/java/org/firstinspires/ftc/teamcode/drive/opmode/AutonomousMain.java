@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 //import org.firstinspires.ftc.teamcode.drive.PoseStorage;
 //import org.firstinspires.ftc.teamcode.drive.Subsystem;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Ratoi;
 import org.firstinspires.ftc.teamcode.drive.Robot;
 import org.openftc.easyopencv.OpenCvCamera;
@@ -18,14 +19,13 @@ import org.openftc.easyopencv.OpenCvInternalCamera;
 public class AutonomousMain extends LinearOpMode {
 
     private Robot robot;
-    private Ratoi ratoi;
     public static int MAX_MILISECONDS = 2500;
     private static final double FOAM_TILE_INCH = 23.6;
     private double startAngle, wobbleSpeed;
 
     private final Pose2d startPose = new Pose2d(-2.6 * FOAM_TILE_INCH, -1 * FOAM_TILE_INCH, Math.toRadians(-90));
     private final Vector2d parkingVector = new Vector2d(0.5 * FOAM_TILE_INCH,-2.3 * FOAM_TILE_INCH);
-    //Modificat aceste obiecte
+    //TODO Modificat aceste obiecte
     private final Vector2d secondWobble = new Vector2d(-1.3 * FOAM_TILE_INCH, -2.4 * FOAM_TILE_INCH);
     private Pose2d wobbleDropPose = new Pose2d(0.2 * FOAM_TILE_INCH, -1 * FOAM_TILE_INCH);
     private static double endTargetTangent = Math.toRadians(-180);
@@ -85,19 +85,22 @@ public class AutonomousMain extends LinearOpMode {
 
 
 
-        switch(ratoi.getLocation()) {
+        switch(detector.getLocation()) {
             case "LEFT":
             {
+                //TODO shipping hub inferior
                 telemetry.addData("Left:", "detecteaza");
                 break;
             }
             case "CENTER":
             {
+                //TODO shipping hub mediu
                 telemetry.addData("Center:", "detecteaza");
                 break;
             }
             case "RIGHT":
             {
+                //TODO shipping hub superior
                 telemetry.addData("Right", "detecteaza");
                 break;
             }
@@ -107,12 +110,11 @@ public class AutonomousMain extends LinearOpMode {
                 break;
             }
         }
-
+        webCam.stopStreaming();
     }
 
         /* TODO task 1: plasat obiect pe shipping hub
             task 2: dat jos ratusca de pe carusel
             task 3: parcat in patrat/warehouse
         */
-
 }
