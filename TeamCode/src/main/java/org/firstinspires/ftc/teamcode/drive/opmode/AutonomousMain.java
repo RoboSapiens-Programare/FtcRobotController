@@ -48,8 +48,6 @@ public class AutonomousMain extends LinearOpMode {
 //
 //        robot.sweeper.servoBrat2.setPosition(0.7);
 
-//        robot.openCV.start();
-
            while (robot.isInitialize() && opModeIsActive()) {
                 idle();
             }
@@ -72,7 +70,7 @@ public class AutonomousMain extends LinearOpMode {
         webCam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
-                webCam.startStreaming(1280, 720, OpenCvCameraRotation.UPRIGHT);
+                webCam.startStreaming(640, 480, OpenCvCameraRotation.UPRIGHT);
             }
 
             @Override
@@ -84,33 +82,30 @@ public class AutonomousMain extends LinearOpMode {
         waitForStart();
 
 
-
-        switch(detector.getLocation()) {
-            case "LEFT":
-            {
-                //TODO shipping hub inferior
-                telemetry.addData("Left:", "detecteaza");
-                break;
+        while (true) {
+            switch (detector.getLocation()) {
+                case "LEFT": {
+                    //TODO shipping hub inferior
+                    telemetry.addData("Left:", "detecteaza");
+                    break;
+                }
+                case "CENTER": {
+                    //TODO shipping hub mediu
+                    telemetry.addData("Center:", "detecteaza");
+                    break;
+                }
+                case "RIGHT": {
+                    //TODO shipping hub superior
+                    telemetry.addData("Right", "detecteaza");
+                    break;
+                }
+                case "NOT_FOUND": {
+                    telemetry.addData("NOT_FOUND", "Eroare");
+                    break;
+                }
             }
-            case "CENTER":
-            {
-                //TODO shipping hub mediu
-                telemetry.addData("Center:", "detecteaza");
-                break;
-            }
-            case "RIGHT":
-            {
-                //TODO shipping hub superior
-                telemetry.addData("Right", "detecteaza");
-                break;
-            }
-            case "NOT_FOUND":
-            {
-                telemetry.addData("NOT_FOUND", "Eroare");
-                break;
-            }
+            webCam.stopStreaming();
         }
-        webCam.stopStreaming();
     }
 
         /* TODO task 1: plasat obiect pe shipping hub

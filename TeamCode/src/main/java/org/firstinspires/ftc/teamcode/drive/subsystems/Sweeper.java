@@ -19,8 +19,10 @@ public class Sweeper {
         servoBrat = hardwareMap.servo.get("servoBrat");
         servoBrat2 = hardwareMap.servo.get("servoBrat2");
 
-//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorBrat.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        motorBrat.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorBrat.setTargetPosition(0);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        motorBrat.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        motorBrat.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBrat.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -32,6 +34,8 @@ public class Sweeper {
         servoBrat2.setPosition(0.3);
     }
 
+    public void eject() { motorSweeper.setPower(0.5); }
+    public void reverseEject() { motorSweeper.setPower(-0.5); }
     public void sweep(){
         motorSweeper.setPower(1);
     }
@@ -57,26 +61,26 @@ public class Sweeper {
     }
 
     public void ridicaBrat(double speed){
-        motorBrat.setPower(Math.min(speed, 1));
+//        motorBrat.setPower(Math.min(speed, 1));
     }
 
     public void coboaraBrat(double speed){
-        motorBrat.setPower(Math.max(-speed, -1));
+//        motorBrat.setPower(Math.max(-speed, -1));
     }
 
     public void stopBrat(){
-        motorBrat.setPower(0);
+//        motorBrat.setPower(0);
     }
 
     public void autoRidicare(){
-//        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() + 200);
-//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        motorBrat.setPower(0.2);
+        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() + 200);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorBrat.setPower(0.2);
     }
 
     public void autoCoborare(){
-//        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() - 200);
-//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        motorBrat.setPower(-0.2);
+        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() - 200);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorBrat.setPower(-0.2);
     }
 }
