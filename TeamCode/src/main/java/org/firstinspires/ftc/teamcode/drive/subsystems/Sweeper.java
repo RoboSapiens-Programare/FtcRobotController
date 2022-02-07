@@ -37,10 +37,10 @@ public class Sweeper {
     public void eject() { motorSweeper.setPower(0.5); }
     public void reverseEject() { motorSweeper.setPower(-0.5); }
     public void sweep(){
-        motorSweeper.setPower(1);
+        motorSweeper.setPower(0.7);
     }
     public void reverseSweep(){
-        motorSweeper.setPower(-1);
+        motorSweeper.setPower(-0.25);
     }
     public void stopSweep(){
         motorSweeper.setPower(0);
