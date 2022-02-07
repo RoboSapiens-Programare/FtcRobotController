@@ -10,8 +10,8 @@ import org.openftc.easyopencv.OpenCvWebcam;
 
 public class OpenCVThread extends Thread{
 
-    OpenCvWebcam Webcam;
-    Ratoi pipeline;
+    static OpenCvWebcam Webcam;
+    static Ratoi pipeline;
 
     private Ratoi.Location location;
 
@@ -58,6 +58,7 @@ public class OpenCVThread extends Thread{
         while(this.isAlive()){
             this.location = pipeline.getLocation();
         }
+
 
         Webcam.stopStreaming();
         Webcam.closeCameraDevice();
