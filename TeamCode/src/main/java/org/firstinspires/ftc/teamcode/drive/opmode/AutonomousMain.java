@@ -64,7 +64,7 @@ public class AutonomousMain extends LinearOpMode {
         webCam = OpenCvCameraFactory.getInstance()
                 .createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
 
-        Ratoi detector = new Ratoi(telemetry);
+        Ratoi detector = new Ratoi();
 
         webCam.setPipeline(detector);
         webCam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
@@ -84,22 +84,22 @@ public class AutonomousMain extends LinearOpMode {
 
         while (true) {
             switch (detector.getLocation()) {
-                case "LEFT": {
+                case LEFT: {
                     //TODO shipping hub inferior
                     telemetry.addData("Left:", "detecteaza");
                     break;
                 }
-                case "CENTER": {
+                case CENTER: {
                     //TODO shipping hub mediu
                     telemetry.addData("Center:", "detecteaza");
                     break;
                 }
-                case "RIGHT": {
+                case RIGHT: {
                     //TODO shipping hub superior
                     telemetry.addData("Right", "detecteaza");
                     break;
                 }
-                case "NOT_FOUND": {
+                case NONE: {
                     telemetry.addData("NOT_FOUND", "Eroare");
                     break;
                 }

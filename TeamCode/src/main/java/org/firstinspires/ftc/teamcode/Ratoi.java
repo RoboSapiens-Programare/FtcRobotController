@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -18,25 +20,30 @@ public class Ratoi extends OpenCvPipeline {
         //TODO de aflat valoarea minima de galben dintr-un dreptunghi, fara ratoi
         private static final double PERCENT_COLOR_THRESHOLD = 0.2;
 
-        private String location = "Ceva";
+        public enum Location {
+            LEFT,
+            CENTER,
+            RIGHT,
+            NONE
+        }
+
+        private Location location = Location.NONE;
 
         //TODO de gasit punctele pentru dreptunghiuri
         static final Rect LEFT_ROI = new Rect(
             new Point(0, 0),
-            new Point(WIDTH / 3, HEIGHT)
+            new Point(200, 480)
         );
 
         static final Rect CENTER_ROI = new Rect(
-            new Point(WIDTH / 3, 0),
-            new Point(WIDTH / 3 * 2, HEIGHT)
+            new Point(201, 0),
+            new Point(440, 480)
         );
 
         static final Rect RIGHT_ROI = new Rect(
-            new Point (WIDTH / 3 * 2, 0),
-            new Point(WIDTH, HEIGHT)
+            new Point (441, 0),
+            new Point(640, 480)
         );
-
-        public Ratoi(Telemetry t) { telemetry = t; }
 
         @Override
         public Mat processFrame(Mat input){
@@ -70,19 +77,19 @@ public class Ratoi extends OpenCvPipeline {
             boolean duckRight = rightValue > PERCENT_COLOR_THRESHOLD;
 
             if(duckLeft) {
-                location = "LEFT";
+                location = Location.LEFT;
                 telemetry.addData("Duck Location", "left");
             }
             else if(duckCenter) {
-                location = "CENTER";
+                location = Location.CENTER;
                 telemetry.addData("Duck Location", "center");
             }
             else if(duckRight) {
-                location = "RIGHT";
+                location = Location.RIGHT;
                 telemetry.addData("Duck Location", "right");
             }
             else {
-                location = "NOT_FOUND";
+                location = Location.NONE;
                 telemetry.addData("Duck Location", "not found");
             }
             telemetry.update();
@@ -92,13 +99,13 @@ public class Ratoi extends OpenCvPipeline {
             Scalar notRata = new Scalar(255, 0, 0);
             Scalar rata = new Scalar(0, 255, 0);
 
-            Imgproc.rectangle(mat, LEFT_ROI, location == "LEFT"? rata:notRata);
-            Imgproc.rectangle(mat, CENTER_ROI, location == "CENTER"? rata:notRata);
-            Imgproc.rectangle(mat, RIGHT_ROI, location == "RIGHT"? rata:notRata);
+            Imgproc.rectangle(mat, LEFT_ROI, location == Location.LEFT? rata:notRata);
+            Imgproc.rectangle(mat, CENTER_ROI, location == Location.CENTER? rata:notRata);
+            Imgproc.rectangle(mat, RIGHT_ROI, location == Location.RIGHT? rata:notRata);
 
             return mat;
         }
-        public String getLocation(){
+        public Location getLocation(){
             return location;
         }
 
