@@ -37,8 +37,8 @@ public class LinearDriveMode extends LinearOpMode {
             else if(gamepad2.a) robot.sweeper.pickupPosition();
             else if(gamepad2.b) robot.sweeper.midPosition();
 
-            if(gamepad2.left_bumper) robot.sweeper.sweep(); 
-            else if(gamepad2.right_bumper) robot.sweeper.reverseSweep();
+            if(gamepad2.left_bumper) robot.sweeper.outtake();
+            else if(gamepad2.right_bumper) robot.sweeper.intake();
             else robot.sweeper.stopSweep();
 
             if(gamepad2.right_trigger>0)
