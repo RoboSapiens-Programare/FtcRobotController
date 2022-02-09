@@ -42,15 +42,10 @@ public class Sweeper {
 //        servoBrat2.setPosition(0.3);
     }
 
-<<<<<<< HEAD
     public void eject() { motorSweeper.setPower(0.5); }
     public void reverseEject() { motorSweeper.setPower(-0.5); }
     public void outtake(){
         motorSweeper.setPower(0.8);
-=======
-    public void sweep(){
-        motorSweeper.setPower(1);
->>>>>>> Roadrunner
     }
     public void intake(){
         motorSweeper.setPower(-1);
@@ -86,15 +81,15 @@ public class Sweeper {
     }
 
     public void autoRidicare(){
-//        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() + 200);
-//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        motorBrat.setPower(0.2);
+        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() + 200);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorBrat.setPower(0.2);
     }
 
     public void autoCoborare(){
-//        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() - 200);
-//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        motorBrat.setPower(-0.2);
+        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() - 200);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorBrat.setPower(-0.2);
     }
 
     public void ridicareCuva(){
