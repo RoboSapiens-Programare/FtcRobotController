@@ -5,6 +5,7 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //import org.firstinspires.ftc.teamcode.drive.PoseStorage;
@@ -84,7 +85,10 @@ public class AutonomousMain extends LinearOpMode {
         }
         robot.drive.setDrivePower(new Pose2d(0, 0, 0));
 
-        robot.sweeper.stopCuva();
+        robot.sweeper.motorCuva.setTargetPosition(200);
+        robot.sweeper.motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.sweeper.motorCuva.setPower(-0.75);
+        robot.sweeper.motorCuva.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER );
     }
 
         /*

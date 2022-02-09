@@ -30,31 +30,25 @@ public class LinearDriveMode extends LinearOpMode {
         while (opModeIsActive()) {
 //            Prototip Sweeper:
 
-            if(gamepad2.dpad_left) robot.sweeper.autoRidicare();
-            if(gamepad2.dpad_right) robot.sweeper.autoCoborare();
+//            if(gamepad2.right_trigger>0)
+//            {
+//                robot.sweeper.ridicaBrat(gamepad2.right_trigger);
+//            }
+//            else if(gamepad2.left_trigger>0)
+//            {
+//                robot.sweeper.coboaraBrat(gamepad2.left_trigger);
+//            }
+//            else
+//                robot.sweeper.stopBrat();
 
-//            if(gamepad2.y) robot.sweeper.defaultPosition();
-//            else if(gamepad2.a) robot.sweeper.pickupPosition();
-//            else if(gamepad2.b) robot.sweeper.midPosition();
+            if(gamepad2.a) robot.sweeper.levelOne();
+            if(gamepad2.b) robot.sweeper.levelTwo();
+            if(gamepad2.y) robot.sweeper.levelThree();
 
             if(gamepad2.left_bumper) robot.sweeper.outtake();
             else if(gamepad2.right_bumper) robot.sweeper.intake();
             else robot.sweeper.stopSweep();
 
-            if(gamepad2.right_trigger>0)
-            {
-                robot.sweeper.ridicaBrat(gamepad2.right_trigger);
-            }
-            else if(gamepad2.left_trigger>0)
-            {
-                robot.sweeper.coboaraBrat(gamepad2.left_trigger);
-            }
-            else
-                robot.sweeper.stopBrat();
-
-            if(gamepad2.y) robot.sweeper.ridicareCuva();
-            else if(gamepad2.a) robot.sweeper.coborareCuva();
-            else robot.sweeper.stopCuva();
 
 //            Carousel:
 
