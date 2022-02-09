@@ -12,30 +12,36 @@ public class Sweeper {
     public DcMotor motorSweeper;
     public Servo servoBrat;
     public Servo servoBrat2;
+    public DcMotor motorCuva;
 
     public Sweeper(HardwareMap hardwareMap){
         motorBrat = hardwareMap.dcMotor.get("motorBrat");
         motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
-        servoBrat = hardwareMap.servo.get("servoBrat");
-        servoBrat2 = hardwareMap.servo.get("servoBrat2");
+//        servoBrat = hardwareMap.servo.get("servoBrat");
+//        servoBrat2 = hardwareMap.servo.get("servoBrat2");
+        motorCuva = hardwareMap.dcMotor.get("motorCuva");
 
-//        motorBrat.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        motorBrat.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBrat.setTargetPosition(0);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        motorBrat.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorBrat.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        motorBrat.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBrat.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorCuva.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorCuva.setTargetPosition(0);
+        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorCuva.setDirection(DcMotorSimple.Direction.FORWARD);
+        motorCuva.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorSweeper.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorSweeper.setDirection(DcMotorSimple.Direction.FORWARD);
         motorSweeper.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        servoBrat.setPosition(0.7);
-        servoBrat2.setPosition(0.3);
+//        servoBrat.setPosition(0.7);
+//        servoBrat2.setPosition(0.3);
     }
 
-    public void eject() { motorSweeper.setPower(0.5); }
-    public void reverseEject() { motorSweeper.setPower(-0.5); }
     public void sweep(){
         motorSweeper.setPower(1);
     }
@@ -61,11 +67,11 @@ public class Sweeper {
     }
 
     public void ridicaBrat(double speed){
-//        motorBrat.setPower(Math.min(speed, 1));
+        motorBrat.setPower(Math.min(speed, 1));
     }
 
     public void coboaraBrat(double speed){
-//        motorBrat.setPower(Math.max(-speed, -1));
+        motorBrat.setPower(Math.max(-speed, -1));
     }
 
     public void stopBrat(){
@@ -73,14 +79,30 @@ public class Sweeper {
     }
 
     public void autoRidicare(){
-        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() + 200);
-        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorBrat.setPower(0.2);
+//        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() + 200);
+//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        motorBrat.setPower(0.2);
     }
 
     public void autoCoborare(){
-        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() - 200);
-        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorBrat.setPower(-0.2);
+//        motorBrat.setTargetPosition(motorBrat.getCurrentPosition() - 200);
+//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        motorBrat.setPower(-0.2);
+    }
+
+    public void ridicareCuva(){
+        motorCuva.setTargetPosition(motorCuva.getCurrentPosition() + 200);
+        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorCuva.setPower(-0.7);
+    }
+
+    public void coborareCuva(){
+        motorCuva.setTargetPosition(motorCuva.getCurrentPosition() - 200);
+        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorCuva.setPower(0.7);
+    }
+
+    public void stopCuva(){
+        motorCuva.setPower(0);
     }
 }
