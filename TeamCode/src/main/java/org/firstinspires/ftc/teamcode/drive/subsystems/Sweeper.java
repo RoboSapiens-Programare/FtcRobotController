@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.drive.subsystems;
 
+import com.qualcomm.hardware.motors.TetrixMotor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -10,25 +12,28 @@ import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 public class Sweeper {
     public DcMotor motorBrat;
     public DcMotor motorSweeper;
-    public DcMotor motorCuva;
+    public DcMotorEx motorCuva;
 
     public Sweeper(HardwareMap hardwareMap){
         motorBrat = hardwareMap.dcMotor.get("motorBrat");
         motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
-        motorCuva = hardwareMap.dcMotor.get("motorCuva");
+        motorCuva = hardwareMap.get(DcMotorEx.class, "motorCuva");
 
 
         motorBrat.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBrat.setTargetPosition(0);
+
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 //        motorBrat.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorBrat.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorBrat.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBrat.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        motorCuva.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorCuva.setTargetPosition(0);
-        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorCuva.setDirection(DcMotorSimple.Direction.FORWARD);
+//        motorCuva.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        motorCuva.setTargetPosition(0);
+//        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        motorCuva.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorCuva.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motorCuva.setDirection(DcMotorSimple.Direction.REVERSE);
         motorCuva.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorSweeper.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -43,9 +48,9 @@ public class Sweeper {
     public void outtake(){
         motorSweeper.setPower(-1);
     }
-    public void stopSweep(){
-        motorSweeper.setPower(0);
-    }
+    public void sweepIn() { motorSweeper.setPower(0.7); }
+    public void sweepOut() { motorSweeper.setPower(-0.5); }
+    public void stopSweep(){ motorSweeper.setPower(0); }
 
 //    public void ridicaBrat(double speed){
 //        motorBrat.setPower(Math.min(speed, 1));
@@ -59,35 +64,57 @@ public class Sweeper {
 //        motorBrat.setPower(0);
 //    }
 
-    public void levelOne(){
-        motorCuva.setTargetPosition(200);
-        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorCuva.setPower(-0.75);
+    public void bratUp(){
+        motorBrat.setTargetPosition(1200);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorBrat.setPower(0.9);
+    }
 
-        motorBrat.setTargetPosition(0);
+    public void bratDown(){
+        motorBrat.setTargetPosition(10);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorBrat.setPower(-0.5);
+    }
+
+    public void levelOne(){
+        motorCuva.setTargetPosition(3);
+        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorCuva.setPower(0.75);
+
+        motorBrat.setTargetPosition(15);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBrat.setPower(-0.75);
     }
 
     public void levelTwo(){
-        motorCuva.setTargetPosition(400);
+        motorCuva.setTargetPosition(7);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        if(motorCuva.getCurrentPosition() > 400)
+        if(motorCuva.getCurrentPosition() > 200)
             motorCuva.setPower(-0.75);
         else motorCuva.setPower(0.75);
 
-        motorBrat.setTargetPosition(0);
+        motorBrat.setTargetPosition(15);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBrat.setPower(-0.75);
     }
 
     public void levelThree(){
-        motorCuva.setTargetPosition(200);
+        motorCuva.setTargetPosition(-3);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorCuva.setPower(0.75);
+        motorCuva.setPower(-0.5);
 
-        motorBrat.setTargetPosition(1000);
+        motorBrat.setTargetPosition(1200);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorBrat.setPower(0.75);
+        motorBrat.setPower(-1);
+    }
+
+    public void ridicaCuva() {
+        motorCuva.setPower(0.5);
+    }
+    public void coboaraCuva() {
+        motorCuva.setPower(-0.5);
+    }
+    public void stopCuva(){
+        motorCuva.setPower(0);
     }
 }

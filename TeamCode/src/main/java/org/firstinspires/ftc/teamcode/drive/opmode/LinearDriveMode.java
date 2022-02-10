@@ -41,14 +41,23 @@ public class LinearDriveMode extends LinearOpMode {
 //            else
 //                robot.sweeper.stopBrat();
 
-            if(gamepad2.a) robot.sweeper.levelOne();
-            if(gamepad2.b) robot.sweeper.levelTwo();
-            if(gamepad2.y) robot.sweeper.levelThree();
+//            if(gamepad2.a) robot.sweeper.levelOne();
+//            if(gamepad2.b) robot.sweeper.levelTwo();
+//            if(gamepad2.y) robot.sweeper.levelThree();
+
+            if(gamepad2.y) robot.sweeper.ridicaCuva();
+            else if(gamepad2.a) robot.sweeper.coboaraCuva();
+            else robot.sweeper.stopCuva();
+
+            if(gamepad2.dpad_up) robot.sweeper.bratUp();
+            if(gamepad2.dpad_down) robot.sweeper.bratDown();
 
             if(gamepad2.left_bumper) robot.sweeper.outtake();
             else if(gamepad2.right_bumper) robot.sweeper.intake();
             else robot.sweeper.stopSweep();
 
+            if(gamepad2.right_stick_button) robot.sweeper.sweepIn();
+            else if(gamepad2.left_stick_button) robot.sweeper.sweepOut();
 
 //            Carousel:
 

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.opmode;
+package org.firstinspires.ftc.teamcode.drive.Drive.Teste;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsAnalogOpticalDistanceSensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cCompassSensor;
@@ -6,11 +6,13 @@ import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cIrSeekerSensorV3;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsTouchSensor;
+import com.qualcomm.hardware.motors.TetrixMotor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
@@ -24,7 +26,8 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //    private ModernRoboticsI2cGyro gyroSensor;
 //    private ModernRoboticsAnalogOpticalDistanceSensor ods;
 //    private ModernRoboticsI2cCompassSensor compassSensor;
-    private ModernRoboticsI2cRangeSensor range;
+//    private ModernRoboticsI2cRangeSensor range;
+    private DcMotor motor;
     @Override
     public void runOpMode() throws InterruptedException {
 //        distanceSensor = hardwareMap.get(DistanceSensor.class, "distanceSensor");
@@ -34,8 +37,10 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //        gyroSensor = hardwareMap.get(ModernRoboticsI2cGyro.class, "gyroSensor");
 //        ods = hardwareMap.get(ModernRoboticsAnalogOpticalDistanceSensor.class, "ods");
 //        compassSensor = hardwareMap.get(ModernRoboticsI2cCompassSensor.class, "compass");
-        range = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "range");
-
+//        range = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "range");
+        motor = hardwareMap.get(DcMotor.class, "motor");
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
             if (isStopRequested()) return;
 
@@ -51,12 +56,23 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //            telemetry.addData("ods maxvoltage: ", ods.getMaxVoltage());
 //            telemetry.addData("ods raw light max: ", ods.getRawLightDetectedMax());
 //            telemetry.addData("compass: ", compassSensor.getMagneticFlux());
-            telemetry.addData("range ultrasonic: ", range.rawUltrasonic());
-            telemetry.addData("range ultrasonic cm : ", range.cmUltrasonic());
-            telemetry.addData("range light: ", range.rawOptical());
-            telemetry.addData("range light cm: ", range.cmOptical());
-
+//            telemetry.addData("range ultrasonic: ", range.rawUltrasonic());
+//            telemetry.addData("range ultrasonic cm : ", range.cmUltrasonic());
+//            telemetry.addData("range light: ", range.rawOptical());
+//            telemetry.addData("range light cm: ", range.cmOptical());
+            telemetry.addData("ticks: ", motor.getCurrentPosition());
             telemetry.update();
+            if(gamepad2.right_bumper) {
+                motor.setPower(0.5);
+                telemetry.addData("ticks: ", motor.getCurrentPosition());
+                }
+            else if(gamepad2.left_bumper) {
+                motor.setPower(-0.5);
+                telemetry.addData("ticks: ", motor.getCurrentPosition());
+            }
+            else
+                motor.setPower(0);
+
         }
     }
 }

@@ -20,7 +20,7 @@ import org.firstinspires.ftc.teamcode.drive.Robot;
 public class AutonomousMain extends LinearOpMode {
 
     private Robot robot = null;
-    public static int parkingDeltaTime = 800;
+    public static int parkingDeltaTime = 700;
     public static int turningDeltaTime = 500;
     private ElapsedTime timer;
     private static final double FOAM_TILE_INCH = 23.6;
@@ -73,7 +73,7 @@ public class AutonomousMain extends LinearOpMode {
         }
         robot.drive.setDrivePower(new Pose2d(0, 0, 0));
 
-        robot.drive.turn(Math.toRadians(75));
+        robot.drive.turn(Math.toRadians(90));
 
         timer.reset();
         timer.startTime();
