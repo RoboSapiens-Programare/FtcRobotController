@@ -33,7 +33,7 @@ public class Sweeper {
 //        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 //        motorCuva.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorCuva.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        motorCuva.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorCuva.setDirection(DcMotorSimple.Direction.FORWARD);
         motorCuva.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorSweeper.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -105,7 +105,7 @@ public class Sweeper {
 
         motorBrat.setTargetPosition(1200);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorBrat.setPower(1);
+        motorBrat.setPower(0.75);
     }
 
     public void resetCuva() {

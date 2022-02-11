@@ -44,8 +44,8 @@ public class Ratoi extends OpenCvPipeline {
         @Override
         public Mat processFrame(Mat input){
             Imgproc.cvtColor(input, mat, Imgproc.COLOR_RGB2HSV);
-            Scalar lowHSV = new Scalar(23, 50, 70);
-            Scalar highHSV = new Scalar(32, 255, 255);
+            Scalar lowHSV = new Scalar(78,158,124);
+            Scalar highHSV = new Scalar(138,255,255);
 
             //dreptunghiuri regiuni
             final Scalar BLUE = new Scalar(0, 0, 255);
