@@ -56,21 +56,21 @@ public class Ratoi extends OpenCvPipeline {
             //dreptunghiuri regiuni
             final Scalar BLUE = new Scalar(0, 0, 255);
             Imgproc.rectangle(input, LEFT_ROI, BLUE, 2);
-            Imgproc.rectangle(input, CENTER_ROI, BLUE, 2);
+//            Imgproc.rectangle(input, CENTER_ROI, BLUE, 2);
             Imgproc.rectangle(input, RIGHT_ROI, BLUE, 2);
 
             Core.inRange(mat, lowHSV, highHSV, mat);
 
             Mat left = mat.submat(LEFT_ROI);
-            Mat center = mat.submat(CENTER_ROI);
+//            Mat center = mat.submat(CENTER_ROI);
             Mat right = mat.submat(RIGHT_ROI);
 
             double leftValue = Core.sumElems(left).val[0] / LEFT_ROI.area() / 255;
-            double centerValue = Core.sumElems(center).val[0] / CENTER_ROI.area() / 255;
+//            double centerValue = Core.sumElems(center).val[0] / CENTER_ROI.area() / 255;
             double rightValue = Core.sumElems(right).val[0] / RIGHT_ROI.area() / 255;
 
             left.release();
-            center.release();
+//            center.release();
             right.release();
 
             /*telemetry.addData("Left raw value", (int) Core.sumElems(left).val[0]);
@@ -81,23 +81,23 @@ public class Ratoi extends OpenCvPipeline {
             telemetry.addData("Right percentage", Math.round(rightValue * 100) + "%");*/
 
             boolean duckLeft = leftValue > PERCENT_COLOR_THRESHOLD;
-            boolean duckCenter = centerValue > PERCENT_COLOR_THRESHOLD;
+//            boolean duckCenter = centerValue > PERCENT_COLOR_THRESHOLD;
             boolean duckRight = rightValue > PERCENT_COLOR_THRESHOLD;
 
             if(duckLeft) {
                 location = Location.LEFT;
                 //telemetry.addData("Duck Location", "left");
             }
-            else if(duckCenter) {
-                location = Location.CENTER;
-                //telemetry.addData("Duck Location", "center");
-            }
+//            else if(duckCenter) {
+//                location = Location.CENTER;
+//                //telemetry.addData("Duck Location", "center");
+//            }
             else if(duckRight) {
-                location = Location.RIGHT;
+                location = Location.CENTER;
                 //telemetry.addData("Duck Location", "right");
             }
             else {
-                location = Location.NONE;
+                location = Location.RIGHT;
                 //telemetry.addData("Duck Location", "not found");
             }
             //telemetry.update();
