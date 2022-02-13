@@ -18,29 +18,36 @@ import java.util.List;
 
 public class TwoWheelTrackingLocalizer extends TwoTrackingWheelLocalizer {
     public static double TICKS_PER_REV = 8192;
-    public static double WHEEL_RADIUS = 0.8; // in
+    public static double WHEEL_RADIUS = 0.78; // in
     public static double GEAR_RATIO = 1; // output (wheel) speed / input (encoder) speed
 
-    public static double PARALLEL_X = 0; // X is the forward and back direction
-    public static double PARALLEL_Y = 7.87; // Y is the strafe direction
+    public static double PARALLEL_X = -0.98; // X is the forward and back direction
+    public static double PARALLEL_Y = -8.35; // Y is the strafe direction
 
-    public static double PERPENDICULAR_X = 0; // X is the forward and back direction
-    public static double PERPENDICULAR_Y = 0; // Y is the strafe direction
+    public static double PERPENDICULAR_X = 5.9; // X is the forward and back direction
+    public static double PERPENDICULAR_Y = 0.98; // Y is the strafe direction
 
     private Encoder parallelEncoder, perpendicularEncoder;
 
     private BNO055IMU imu;
 
-    private static double X_MULTIPLIER = 1;
-    private static double Y_MULTIPLIER = 1;
+    private static double X_MULTIPLIER = 1.06;
+    private static double Y_MULTIPLIER = 1.07;
 
     public TwoWheelTrackingLocalizer(HardwareMap hardwareMap) {
+
+
         super(Arrays.asList(
                 new Pose2d(PARALLEL_X, PARALLEL_Y, 0),              //leftEncoder
                 new Pose2d(PERPENDICULAR_X, PERPENDICULAR_Y, Math.toRadians(90))    //frontEncoder
         ));
-        parallelEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "parallelEncoder"));
-        perpendicularEncoder = new Encoder((hardwareMap.get(DcMotorEx.class, "perpendicularEncoder")));
+        parallelEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "rightFront"));
+        perpendicularEncoder = new Encoder((hardwareMap.get(DcMotorEx.class, "leftFront")));
+
+
+
+        parallelEncoder.setDirection(Encoder.Direction.REVERSE);
+        perpendicularEncoder.setDirection(Encoder.Direction.REVERSE);
 
         imu = hardwareMap.get(BNO055IMU.class, "imu");
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
@@ -56,8 +63,8 @@ public class TwoWheelTrackingLocalizer extends TwoTrackingWheelLocalizer {
     @Override
     public List<Double> getWheelPositions() {
         return Arrays.asList(
-                encoderTicksToInches(parallelEncoder.getCurrentPosition() * X_MULTIPLIER),
-                encoderTicksToInches(perpendicularEncoder.getCurrentPosition() * Y_MULTIPLIER)
+                encoderTicksToInches(parallelEncoder.getCurrentPosition()) * X_MULTIPLIER,
+                encoderTicksToInches(perpendicularEncoder.getCurrentPosition()) * Y_MULTIPLIER
         );
     }
 
@@ -83,8 +90,8 @@ public class TwoWheelTrackingLocalizer extends TwoTrackingWheelLocalizer {
     @Override
     public List<Double> getWheelVelocities() {
         return Arrays.asList(
-                encoderTicksToInches(parallelEncoder.getCorrectedVelocity()),
-                encoderTicksToInches(perpendicularEncoder.getCorrectedVelocity())
+                encoderTicksToInches(parallelEncoder.getCorrectedVelocity()) * X_MULTIPLIER,
+                encoderTicksToInches(perpendicularEncoder.getCorrectedVelocity()) * Y_MULTIPLIER
         );
     }
 

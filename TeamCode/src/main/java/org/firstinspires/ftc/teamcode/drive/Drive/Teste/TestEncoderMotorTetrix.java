@@ -11,15 +11,17 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.util.Encoder;
 
 @TeleOp(name = "tewt encodewr")
 public class TestEncoderMotorTetrix extends LinearOpMode {
-//    private ModernRoboticsTouchSensor touchSensor;
+    //    private ModernRoboticsTouchSensor touchSensor;
 //    private DistanceSensor distanceSensor;
 //    private ColorSensor colorSensor;
 //    private ModernRoboticsI2cIrSeekerSensorV3 modernRoboticsI2cIrSeekerSensorV3;
@@ -28,6 +30,8 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //    private ModernRoboticsI2cCompassSensor compassSensor;
 //    private ModernRoboticsI2cRangeSensor range;
     private DcMotor motor;
+    private Encoder encoderParalel, encoderPerpendicular;
+
     @Override
     public void runOpMode() throws InterruptedException {
 //        distanceSensor = hardwareMap.get(DistanceSensor.class, "distanceSensor");
@@ -38,13 +42,15 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //        ods = hardwareMap.get(ModernRoboticsAnalogOpticalDistanceSensor.class, "ods");
 //        compassSensor = hardwareMap.get(ModernRoboticsI2cCompassSensor.class, "compass");
 //        range = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "range");
-        motor = hardwareMap.get(DcMotor.class, "motor");
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        motor = hardwareMap.get(DcMotor.class, "motor");
+//        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+//        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        encoderParalel = new Encoder(hardwareMap.get(DcMotorEx.class, "parallelEncoder"));
+        encoderPerpendicular = new Encoder(hardwareMap.get(DcMotorEx.class, "perpendicularEncoder"));
         waitForStart();
-            if (isStopRequested()) return;
+        if (isStopRequested()) return;
 
-        while (opModeIsActive()){
+        while (opModeIsActive()) {
 //            telemetry.addData("range sensor: ", distanceSensor.getDistance(DistanceUnit.CM));
 //            telemetry.addData("range sensor: ", touchSensor.getValue());
 //            telemetry.addData("color", colorSensor.red());
@@ -60,18 +66,9 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //            telemetry.addData("range ultrasonic cm : ", range.cmUltrasonic());
 //            telemetry.addData("range light: ", range.rawOptical());
 //            telemetry.addData("range light cm: ", range.cmOptical());
-            telemetry.addData("ticks: ", motor.getCurrentPosition());
+            telemetry.addData("ticksparal: ", encoderParalel.getCurrentPosition());
+            telemetry.addData("ticksperp: ", encoderPerpendicular.getCurrentPosition());
             telemetry.update();
-            if(gamepad2.right_bumper) {
-                motor.setPower(0.5);
-                telemetry.addData("ticks: ", motor.getCurrentPosition());
-                }
-            else if(gamepad2.left_bumper) {
-                motor.setPower(-0.5);
-                telemetry.addData("ticks: ", motor.getCurrentPosition());
-            }
-            else
-                motor.setPower(0);
 
         }
     }

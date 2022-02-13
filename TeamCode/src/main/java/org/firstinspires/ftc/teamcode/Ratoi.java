@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 //import org.firstinspires.ftc.robotcore.external.Telemetry;
+import android.graphics.Color;
+
+import org.checkerframework.checker.units.qual.C;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
@@ -12,6 +15,9 @@ import org.openftc.easyopencv.OpenCvPipeline;
 public class Ratoi extends OpenCvPipeline {
         //Telemetry telemetry;
         Mat mat = new Mat();
+
+        private final Scalar LOW_YELLOW = new Scalar(20, 100, 100);
+        private final Scalar HIGH_YELLOW = new Scalar(30, 255, 255);
 
         //TODO de aflat valoarea minima de galben dintr-un dreptunghi, fara ratoi
         private static final double PERCENT_COLOR_THRESHOLD = 0.2;
@@ -44,8 +50,8 @@ public class Ratoi extends OpenCvPipeline {
         @Override
         public Mat processFrame(Mat input){
             Imgproc.cvtColor(input, mat, Imgproc.COLOR_RGB2HSV);
-            Scalar lowHSV = new Scalar(78,158,124);
-            Scalar highHSV = new Scalar(138,255,255);
+            Scalar lowHSV = LOW_YELLOW;
+            Scalar highHSV = HIGH_YELLOW;
 
             //dreptunghiuri regiuni
             final Scalar BLUE = new Scalar(0, 0, 255);

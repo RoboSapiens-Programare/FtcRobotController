@@ -21,18 +21,17 @@ public class Sweeper {
 
 
         motorBrat.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorBrat.setTargetPosition(0);
-
-        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        motorBrat.setTargetPosition(0);
+//        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 //        motorBrat.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBrat.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBrat.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-//        motorCuva.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorCuva.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //        motorCuva.setTargetPosition(0);
 //        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 //        motorCuva.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorCuva.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        motorCuva.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorCuva.setDirection(DcMotorSimple.Direction.FORWARD);
         motorCuva.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -101,7 +100,7 @@ public class Sweeper {
     public void levelThree(){
         motorCuva.setTargetPosition(-450);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorCuva.setPower(-0.5);
+        motorCuva.setPower(-0.4);
 
         motorBrat.setTargetPosition(1200);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -112,6 +111,15 @@ public class Sweeper {
         motorCuva.setTargetPosition(0);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorCuva.setPower(0.5);
+
+        motorBrat.setTargetPosition(0);
+        motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorBrat.setPower(-0.2);
+    }
+    public void culcatCuva() {
+        motorCuva.setTargetPosition(-1050);
+        motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorCuva.setPower(-0.5);
 
         motorBrat.setTargetPosition(0);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
