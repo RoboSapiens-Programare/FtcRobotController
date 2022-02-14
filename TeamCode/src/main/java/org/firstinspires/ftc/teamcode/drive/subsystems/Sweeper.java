@@ -76,7 +76,7 @@ public class Sweeper {
     }
 
     public void levelOne(){
-        motorCuva.setTargetPosition(-130);
+        motorCuva.setTargetPosition(950);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorCuva.setPower(-0.5);
 
@@ -86,11 +86,11 @@ public class Sweeper {
     }
 
     public void levelTwo(){
-        motorCuva.setTargetPosition(-340);
+        motorCuva.setTargetPosition(750);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        if(motorCuva.getCurrentPosition() > -340)
-            motorCuva.setPower(-0.5);
-        else motorCuva.setPower(0.5);
+        if(motorCuva.getCurrentPosition() > 750)
+            motorCuva.setPower(0.5);
+        else motorCuva.setPower(-0.5);
 
         motorBrat.setTargetPosition(0);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -98,7 +98,7 @@ public class Sweeper {
     }
 
     public void levelThree(){
-        motorCuva.setTargetPosition(-450);
+        motorCuva.setTargetPosition(500);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorCuva.setPower(-0.4);
 
@@ -107,19 +107,19 @@ public class Sweeper {
         motorBrat.setPower(0.75);
     }
 
-    public void resetCuva() {
-        motorCuva.setTargetPosition(0);
+    public void culcatCuva() {
+        motorCuva.setTargetPosition(1070);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorCuva.setPower(0.5);
+        motorCuva.setPower(-0.5);
 
         motorBrat.setTargetPosition(0);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBrat.setPower(-0.2);
     }
-    public void culcatCuva() {
-        motorCuva.setTargetPosition(-1050);
+    public void resetCuva() {
+        motorCuva.setTargetPosition(0);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorCuva.setPower(-0.5);
+        motorCuva.setPower(0.5);
 
         motorBrat.setTargetPosition(0);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);

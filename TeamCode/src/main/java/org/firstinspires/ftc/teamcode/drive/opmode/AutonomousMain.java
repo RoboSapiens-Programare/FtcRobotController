@@ -20,8 +20,8 @@ import org.firstinspires.ftc.teamcode.drive.Robot;
 public class AutonomousMain extends LinearOpMode {
 
     private Robot robot = null;
-    public static int parkingDeltaTime = 700;
-    public static int turningDeltaTime = 500;
+    public static int parkingDeltaTime = /*700*/2600;
+    public static int turningDeltaTime = 400;
     private ElapsedTime timer;
     private static final double FOAM_TILE_INCH = 23.6;
     private double startAngle, wobbleSpeed;
@@ -73,7 +73,7 @@ public class AutonomousMain extends LinearOpMode {
         }
         robot.drive.setDrivePower(new Pose2d(0, 0, 0));
 
-        robot.drive.turn(Math.toRadians(90));
+        robot.drive.turn(Math.toRadians(-135)); //sau 90
 
         timer.reset();
         timer.startTime();
@@ -89,6 +89,13 @@ public class AutonomousMain extends LinearOpMode {
 //        robot.sweeper.motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 //        robot.sweeper.motorCuva.setPower(-0.75);
 //        robot.sweeper.motorCuva.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER );
+//        timer.reset();
+//        timer.startTime();
+
+//        robot.drive.turn(Math.toRadians(-180));
+//        while(timer.milliseconds() < parkingDeltaTime){
+//            telemetry.addData("ho", "matelot");
+//        }
     }
 
         /*

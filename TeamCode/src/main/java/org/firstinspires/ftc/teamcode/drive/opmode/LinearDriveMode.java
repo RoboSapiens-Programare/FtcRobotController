@@ -59,8 +59,8 @@ public class LinearDriveMode extends LinearOpMode {
             if(gamepad2.right_stick_button) robot.sweeper.sweepIn();
             else if(gamepad2.left_stick_button) robot.sweeper.sweepOut();
 
-            if(gamepad1.right_bumper) robot.sweeper.resetCuva();
-            if(gamepad1.a) robot.sweeper.culcatCuva();
+            if(gamepad1.right_bumper) robot.sweeper.culcatCuva();
+            if(gamepad1.a) robot.sweeper.resetCuva();
 
 //            Carousel:
 

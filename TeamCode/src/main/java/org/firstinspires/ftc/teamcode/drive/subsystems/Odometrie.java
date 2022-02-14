@@ -14,18 +14,18 @@ public class Odometrie {
         servoParalel = hardwareMap.servo.get("servoParalel");
         servoPerpendicular = hardwareMap.servo.get("servoPerpendicular");
 
-        servoPerpendicular.setPosition(0);
-        servoParalel.setPosition(0);
+        servoParalel.setPosition(1);
+        servoPerpendicular.setPosition(1);
     }
 
     public void ridicaRoti() {
         servoParalel.setPosition(0.7);
-        servoPerpendicular.setPosition(0.7);
+        servoPerpendicular.setPosition(0);
     }
 
     public void coboaraRoti() {
         servoParalel.setPosition(0);
-        servoPerpendicular.setPosition(0);
+        servoPerpendicular.setPosition(0.7);
     }
 
 }

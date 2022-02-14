@@ -16,7 +16,7 @@ public class Carousel {
     }
 
     public void spin(){
-        carousel.setPower(-0.5);
+        carousel.setPower(-1);
     }
 
     public void stopSpin(){

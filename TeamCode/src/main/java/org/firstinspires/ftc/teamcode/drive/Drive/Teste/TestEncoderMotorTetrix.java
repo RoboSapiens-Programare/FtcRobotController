@@ -42,9 +42,9 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //        ods = hardwareMap.get(ModernRoboticsAnalogOpticalDistanceSensor.class, "ods");
 //        compassSensor = hardwareMap.get(ModernRoboticsI2cCompassSensor.class, "compass");
 //        range = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "range");
-//        motor = hardwareMap.get(DcMotor.class, "motor");
-//        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-//        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor = hardwareMap.get(DcMotor.class, "motor");
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         encoderParalel = new Encoder(hardwareMap.get(DcMotorEx.class, "parallelEncoder"));
         encoderPerpendicular = new Encoder(hardwareMap.get(DcMotorEx.class, "perpendicularEncoder"));
         waitForStart();
@@ -66,8 +66,9 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //            telemetry.addData("range ultrasonic cm : ", range.cmUltrasonic());
 //            telemetry.addData("range light: ", range.rawOptical());
 //            telemetry.addData("range light cm: ", range.cmOptical());
-            telemetry.addData("ticksparal: ", encoderParalel.getCurrentPosition());
-            telemetry.addData("ticksperp: ", encoderPerpendicular.getCurrentPosition());
+//            telemetry.addData("ticksparal: ", encoderParalel.getCurrentPosition());
+//            telemetry.addData("ticksperp: ", encoderPerpendicular.getCurrentPosition());
+            telemetry.addData("ticks: ", motor.getCurrentPosition());
             telemetry.update();
 
         }
