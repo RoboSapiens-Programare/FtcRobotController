@@ -28,7 +28,7 @@ public class LinearDriveMode extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
-//            Prototip Sweeper:
+//            Sweeper:
 
 //            if(gamepad2.right_trigger>0)
 //            {
@@ -66,6 +66,9 @@ public class LinearDriveMode extends LinearOpMode {
 
             if(gamepad1.left_bumper) robot.carousel.spin();
             else robot.carousel.stopSpin();
+
+            if(gamepad1.x) robot.odometrie.coboaraRoti();
+            if(gamepad1.y) robot.odometrie.ridicaRoti();
 
 //            Drive:
 

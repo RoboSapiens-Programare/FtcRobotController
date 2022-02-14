@@ -12,12 +12,12 @@ import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 public class Sweeper {
     public DcMotor motorBrat;
     public DcMotor motorSweeper;
-    public DcMotorEx motorCuva;
+    public DcMotor motorCuva;
 
     public Sweeper(HardwareMap hardwareMap){
         motorBrat = hardwareMap.dcMotor.get("motorBrat");
         motorSweeper = hardwareMap.dcMotor.get("motorSweeper");
-        motorCuva = hardwareMap.get(DcMotorEx.class, "motorCuva");
+        motorCuva = hardwareMap.dcMotor.get("motorCuva");
 
 
         motorBrat.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -66,7 +66,7 @@ public class Sweeper {
     public void bratUp(){
         motorBrat.setTargetPosition(1200);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorBrat.setPower(0.9);
+        motorBrat.setPower(1);
     }
 
     public void bratDown(){
@@ -80,7 +80,7 @@ public class Sweeper {
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorCuva.setPower(-0.5);
 
-        motorBrat.setTargetPosition(15);
+        motorBrat.setTargetPosition(0);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBrat.setPower(-0.2);
     }
@@ -92,7 +92,7 @@ public class Sweeper {
             motorCuva.setPower(-0.5);
         else motorCuva.setPower(0.5);
 
-        motorBrat.setTargetPosition(15);
+        motorBrat.setTargetPosition(0);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBrat.setPower(-0.2);
     }
