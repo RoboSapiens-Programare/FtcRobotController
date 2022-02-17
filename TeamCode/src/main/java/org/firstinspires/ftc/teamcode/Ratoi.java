@@ -20,20 +20,19 @@ public class Ratoi extends OpenCvPipeline {
         private final Scalar HIGH_YELLOW = new Scalar(30, 255, 255);
 
         //TODO de aflat valoarea minima de galben dintr-un dreptunghi, fara ratoi
-        private static final double PERCENT_COLOR_THRESHOLD = 0.2;
+        private static final double PERCENT_COLOR_THRESHOLD = 0.1;
 
         public enum Location {
             LEFT,
             CENTER,
-            RIGHT,
-            NONE
+            RIGHT
         }
 
-        private Location location = Location.NONE;
+        private Location location = Location.RIGHT;
 
         //TODO de gasit punctele pentru dreptunghiuri
         static final Rect LEFT_ROI = new Rect(
-            new Point(200, 240),
+            new Point(150, 180),
             new Point(440, 480)
         );
 

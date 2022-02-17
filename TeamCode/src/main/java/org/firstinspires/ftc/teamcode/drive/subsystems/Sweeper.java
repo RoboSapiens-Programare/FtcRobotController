@@ -98,7 +98,7 @@ public class Sweeper {
     }
 
     public void levelThree(){
-        motorCuva.setTargetPosition(500);
+        motorCuva.setTargetPosition(600);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorCuva.setPower(-0.4);
 
@@ -108,7 +108,7 @@ public class Sweeper {
     }
 
     public void culcatCuva() {
-        motorCuva.setTargetPosition(1070);
+        motorCuva.setTargetPosition(1080);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorCuva.setPower(-0.5);
 

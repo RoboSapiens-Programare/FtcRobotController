@@ -18,7 +18,7 @@ public class OpenCVThreadTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         openCV = new OpenCVThread(hardwareMap);
-        location = Ratoi.Location.NONE;
+        location = Ratoi.Location.RIGHT;
 
         openCV.start();
 
@@ -30,7 +30,7 @@ public class OpenCVThreadTest extends LinearOpMode {
 
         timer.startTime();
 
-        while (openCV.getLocation().equals(Ratoi.Location.NONE) && timer.milliseconds() < MAX_MILISECONDS){
+        while (openCV.getLocation().equals(Ratoi.Location.RIGHT) && timer.milliseconds() < MAX_MILISECONDS){
             location = openCV.getLocation();
             telemetry.addData("Stai ma usor", "");
             telemetry.update();

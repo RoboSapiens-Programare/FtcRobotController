@@ -17,6 +17,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.drive.mechanumSamples.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.util.Encoder;
 
 @TeleOp(name = "tewt encodewr")
@@ -29,8 +30,9 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //    private ModernRoboticsAnalogOpticalDistanceSensor ods;
 //    private ModernRoboticsI2cCompassSensor compassSensor;
 //    private ModernRoboticsI2cRangeSensor range;
-    private DcMotor motor;
-    private Encoder encoderParalel, encoderPerpendicular;
+//    private DcMotor motor;
+//    private Encoder encoderParalel, encoderPerpendicular;
+    private SampleMecanumDrive sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -42,11 +44,12 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //        ods = hardwareMap.get(ModernRoboticsAnalogOpticalDistanceSensor.class, "ods");
 //        compassSensor = hardwareMap.get(ModernRoboticsI2cCompassSensor.class, "compass");
 //        range = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "range");
-        motor = hardwareMap.get(DcMotor.class, "motor");
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        encoderParalel = new Encoder(hardwareMap.get(DcMotorEx.class, "parallelEncoder"));
-        encoderPerpendicular = new Encoder(hardwareMap.get(DcMotorEx.class, "perpendicularEncoder"));
+//        motor = hardwareMap.get(DcMotor.class, "motor");
+//        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+//        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        encoderParalel = new Encoder(hardwareMap.get(DcMotorEx.class, "parallelEncoder"));
+//        encoderPerpendicular = new Encoder(hardwareMap.get(DcMotorEx.class, "perpendicularEncoder"));
+        sampleMecanumDrive.getExternalHeading();
         waitForStart();
         if (isStopRequested()) return;
 
@@ -68,7 +71,7 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //            telemetry.addData("range light cm: ", range.cmOptical());
 //            telemetry.addData("ticksparal: ", encoderParalel.getCurrentPosition());
 //            telemetry.addData("ticksperp: ", encoderPerpendicular.getCurrentPosition());
-            telemetry.addData("ticks: ", motor.getCurrentPosition());
+//            telemetry.addData("ticks: ", motor.getCurrentPosition());
             telemetry.update();
 
         }
