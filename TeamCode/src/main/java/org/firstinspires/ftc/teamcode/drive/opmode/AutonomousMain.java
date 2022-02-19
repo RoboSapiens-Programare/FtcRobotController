@@ -132,7 +132,7 @@ public class AutonomousMain extends LinearOpMode {
                 case LEFT: //o da
                     robot.drive.turn(Math.toRadians(TURNING_ANGLE - 10));
 
-                    mergi(100, new Pose2d(0.7, 0, 0));
+                    mergi(100, new Pose2d(0.5, 0, 0));
 
                     robot.sweeper.levelOne();
 
@@ -143,8 +143,6 @@ public class AutonomousMain extends LinearOpMode {
                     while(timer.milliseconds() < 2500)
                         robot.sweeper.outtake();
                     robot.sweeper.stopSweep();
-
-                    mergi(100, new Pose2d(-0.7, 0, 0));
 
                     robot.sweeper.resetCuva();
 
@@ -169,17 +167,15 @@ public class AutonomousMain extends LinearOpMode {
                         robot.sweeper.outtake();
                     robot.sweeper.stopSweep();
 
-                    mergi(100, new Pose2d(-0.7, 0, 0));
-
                     robot.sweeper.resetCuva();
 
                     mergi(1000, new Pose2d(0, 0, 0));
 
-                    robot.drive.turn(Math.toRadians(-TURNING_ANGLE - 10));
+                    robot.drive.turn(Math.toRadians(-TURNING_ANGLE - 15));
 
                     break;
                 case RIGHT: //ok
-                    robot.drive.turn(Math.toRadians(-TURNING_ANGLE - 50));
+                    robot.drive.turn(Math.toRadians(-TURNING_ANGLE - 40));
 
                     timer = new ElapsedTime();
                     timer.startTime();
@@ -188,19 +184,19 @@ public class AutonomousMain extends LinearOpMode {
 
                     robot.sweeper.levelThree();
 
-                    mergi(500, new Pose2d(0, 0, 0));
+                    mergi(1000, new Pose2d(0, 0, 0));
 
                     while(timer.milliseconds() < 2500)
                         robot.sweeper.sweepIn();
                     robot.sweeper.stopSweep();
 
-                    mergi(300, new Pose2d(0.7, 0, 0));
+                    mergi(300, new Pose2d(0.5, 0, 0));
 
                     robot.sweeper.resetCuva();
 
                     mergi(3000, new Pose2d(0, 0, 0));
 
-                    robot.drive.turn(Math.toRadians(TURNING_ANGLE + 45));
+                    robot.drive.turn(Math.toRadians(TURNING_ANGLE + 50));
 
                     break;
             }

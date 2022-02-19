@@ -86,9 +86,9 @@ public class Sweeper {
     }
 
     public void levelTwo(){
-        motorCuva.setTargetPosition(750);
+        motorCuva.setTargetPosition(700);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        if(motorCuva.getCurrentPosition() > 750)
+        if(motorCuva.getCurrentPosition() > 700)
             motorCuva.setPower(0.5);
         else motorCuva.setPower(-0.5);
 
