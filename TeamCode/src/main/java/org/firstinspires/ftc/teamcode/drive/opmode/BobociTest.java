@@ -54,20 +54,26 @@ public class BobociTest extends LinearOpMode {
 
 
 //todo        STICK MOVEMENT++:
-            if(gamepad1.left_stick_y > 0){
-                isGoingForward = 1;
+//            if(gamepad1.left_stick_y > 0){
+//                isGoingForward = 1;
+//
+//            }
+//            if(gamepad1.left_stick_y < 0){
+//                isGoingForward = -1;
+//            }
+//
+//            if(gamepad1.right_stick_x > STICK_TRESHOLD){
+//                robot.drone.setMotorPowers(-gamepad1.right_stick_x, -0.5 + gamepad1.right_stick_x);
+//            }
+//            else if(gamepad1.right_stick_x < STICK_TRESHOLD){
+//                robot.drone.setMotorPowers(gamepad1.right_stick_x, 0.5 - gamepad1.right_stick_x);
+//            }else robot.drone.stop();
 
-            }
-            if(gamepad1.left_stick_y < 0){
-                isGoingForward = -1;
-            }
+            if(gamepad1.left_stick_y < -0.2 || gamepad1.left_stick_y > 0.2) robot.drone.putereStanga(gamepad1.left_stick_y);
+            if(gamepad1.right_stick_y < -0.2 || gamepad1.right_stick_y > 0.2) robot.drone. putereDreapta(gamepad1.right_stick_y);
+            else if(gamepad1.left_stick_y >= -0.2 && gamepad1.left_stick_y <= 0.2 && gamepad1.right_stick_y >= -0.2 && gamepad1.right_stick_y <= 0.2)   robot.drone.stop();
 
-            if(gamepad1.right_stick_x > STICK_TRESHOLD){
-                robot.drone.setMotorPowers(-gamepad1.right_stick_x, -0.5 + gamepad1.right_stick_x);
-            }
-            else if(gamepad1.right_stick_x < STICK_TRESHOLD){
-                robot.drone.setMotorPowers(gamepad1.right_stick_x, 0.5 - gamepad1.right_stick_x);
-            }else robot.drone.stop();
+
         }
     }
 }

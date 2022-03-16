@@ -17,7 +17,7 @@ public class BobociDrone {
         motorStanga.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorDreapta.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        motorDreapta.setDirection(DcMotorSimple.Direction.FORWARD);
+        motorDreapta.setDirection(DcMotorSimple.Direction.REVERSE);
         motorDreapta.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
@@ -50,6 +50,9 @@ public class BobociDrone {
 //        motorStanga.setPower(-1);
 //        motorDreapta.setPower(0);
 //    }
+
+    public void putereStanga(double speed) {motorStanga.setPower(speed);}
+    public void putereDreapta(double speed) {motorDreapta.setPower(speed);}
 
     public void setMotorPowers(double speedStanga, double speedDreapta){
         motorStanga.setPower(speedStanga);
