@@ -12,14 +12,14 @@ public class Robot {
     public Sweeper sweeper;
     public Carousel carousel;
     public MecanumDriveCh drive;
-    public Odometrie odometrie;
+//    public Odometrie odometrie;
 
     public Robot (HardwareMap hardwareMap){
         initialize = true;
         sweeper = new Sweeper(hardwareMap);
         carousel = new Carousel(hardwareMap);
         drive = new MecanumDriveCh(hardwareMap);
-        odometrie = new Odometrie(hardwareMap);
+//        odometrie = new Odometrie(hardwareMap);
         initialize = false;
     }
     public boolean isInitialize() {return initialize;}

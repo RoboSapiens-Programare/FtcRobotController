@@ -20,16 +20,13 @@ import org.firstinspires.ftc.teamcode.drive.localization.OpenCVThread;
 //import org.openftc.easyopencv.OpenCvCameraRotation;
 //import org.openftc.easyopencv.OpenCvInternalCamera;
 
-@Autonomous(name="Autonomie Help me", group = "autonomous")
-public class AutonomousMain extends LinearOpMode {
+@Autonomous(name="Autonomie carousel", group = "autonomous")
+public class AutonomousLeft extends LinearOpMode {
 
     private Robot robot = null;
     private static final int TURNING_ANGLE = 120;
-    public static int parkingDeltaTime = /*700*/2600;
-    public static int turningDeltaTime = 110;
     private ElapsedTime timer;
     private static final double FOAM_TILE_INCH = 23.6;
-    private double startAngle, wobbleSpeed;
 
     private final Pose2d startPose = new Pose2d(-2.6 * FOAM_TILE_INCH, -1 * FOAM_TILE_INCH, Math.toRadians(-90));
     private final Vector2d parkingVector = new Vector2d(0.5 * FOAM_TILE_INCH,-2.3 * FOAM_TILE_INCH);
@@ -119,90 +116,85 @@ public class AutonomousMain extends LinearOpMode {
             timer = new ElapsedTime();
             timer.startTime();
 
-            mergi(turningDeltaTime, new Pose2d(0.7, 0, 0));
+        switch(finalLocation) {
+            case LEFT:
+                mergi(100, new Pose2d(-0.7, 0, 0));
 
-            robot.drive.turn(Math.toRadians(-TURNING_ANGLE));
+                robot.drive.turn(Math.toRadians(-55));
 
-            timer = new ElapsedTime();
-            timer.startTime();
+                robot.sweeper.levelOne();
 
-            mergi(750, new Pose2d(0.7, 0, 0));
+                mergi(300, new Pose2d(-0.7, 0, 0));
 
-            switch(finalLocation) {
-                case LEFT: //o da
-                    robot.drive.turn(Math.toRadians(TURNING_ANGLE - 10));
+                mergi(1000, new Pose2d(0, 0, 0));
 
-                    mergi(100, new Pose2d(0.5, 0, 0));
+                robot.sweeper.outtake();
 
-                    robot.sweeper.levelOne();
+                mergi(2000, new Pose2d(0, 0, 0));
 
-                    mergi(1500, new Pose2d(0, 0, 0));
+                robot.sweeper.stopSweep();
 
-                    timer = new ElapsedTime();
-                    timer.startTime();
-                    while(timer.milliseconds() < 2500)
-                        robot.sweeper.outtake();
-                    robot.sweeper.stopSweep();
+                robot.sweeper.resetCuva();
 
-                    robot.sweeper.resetCuva();
+                mergi(1000, new Pose2d(0, 0, 0));
 
-                    mergi(1500, new Pose2d(0, 0, 0));
+                robot.drive.turn(Math.toRadians(-55));
+                break;
+            case CENTER:
+                mergi(100, new Pose2d(-0.7, 0, 0));
 
-                    robot.drive.turn(Math.toRadians(-TURNING_ANGLE - 10));
+                robot.drive.turn(Math.toRadians(-55));
 
-                    break;
-                case CENTER: //yaaaa
-                    robot.drive.turn(Math.toRadians(TURNING_ANGLE - 10));
+                robot.sweeper.levelTwo();
 
-                    timer = new ElapsedTime();
-                    timer.startTime();
+                mergi(300, new Pose2d(-0.7, 0, 0));
 
-                    mergi(170, new Pose2d(0.7, 0, 0));
+                mergi(1000, new Pose2d(0, 0, 0));
 
-                    robot.sweeper.levelTwo();
+                robot.sweeper.outtake();
 
-                    mergi(600, new Pose2d(0, 0, 0));
+                mergi(2000, new Pose2d(0, 0, 0));
 
-                    while(timer.milliseconds() < 3000)
-                        robot.sweeper.outtake();
-                    robot.sweeper.stopSweep();
+                robot.sweeper.stopSweep();
 
-                    robot.sweeper.resetCuva();
+                robot.sweeper.resetCuva();
 
-                    mergi(1000, new Pose2d(0, 0, 0));
+                mergi(1000, new Pose2d(0, 0, 0));
 
-                    robot.drive.turn(Math.toRadians(-TURNING_ANGLE - 15));
+                robot.drive.turn(Math.toRadians(0));
+                break;
+            case RIGHT:
+                mergi(100, new Pose2d(-0.7, 0, 0));
 
-                    break;
-                case RIGHT: //ok
-                    robot.drive.turn(Math.toRadians(-TURNING_ANGLE - 40));
+                robot.drive.turn(Math.toRadians(-55));
 
-                    timer = new ElapsedTime();
-                    timer.startTime();
+                mergi(100, new Pose2d(-0.7, 0, 0));
 
-                    mergi(400, new Pose2d(-0.6, 0, 0));
+                robot.drive.turn(Math.toRadians(-230));
 
-                    robot.sweeper.levelThree();
+                robot.sweeper.levelThree();
 
-                    mergi(1000, new Pose2d(0, 0, 0));
+                mergi(600, new Pose2d(0.5, 0, 0));
 
-                    while(timer.milliseconds() < 2500)
-                        robot.sweeper.sweepIn();
-                    robot.sweeper.stopSweep();
+                mergi(2000, new Pose2d(0, 0, 0));
 
-                    mergi(300, new Pose2d(0.5, 0, 0));
+                robot.sweeper.intake();
 
-                    robot.sweeper.resetCuva();
+                mergi(2000, new Pose2d(0, 0, 0));
 
-                    mergi(3000, new Pose2d(0, 0, 0));
+                robot.sweeper.stopSweep();
 
-                    robot.drive.turn(Math.toRadians(TURNING_ANGLE + 50));
+                mergi(300, new Pose2d(-0.7, 0, 0));
 
-                    break;
-            }
+                robot.drive.turn(Math.toRadians(-90));
 
-            mergi(2000, new Pose2d(1, 0, 0));
-            mergi(1000, new Pose2d(0, 0, 0));
+                robot.sweeper.resetCuva();
+
+                mergi(2000, new Pose2d(0, 0, 0));
+
+                robot.drive.turn(Math.toRadians(0));
+                break;
+        }
 
  //sau 90
 
@@ -244,8 +236,8 @@ public class AutonomousMain extends LinearOpMode {
 //        }
 
     }
-
+//
 //          todo  task 1: plasat obiect pe shipping hub DONE
 //          todo  task 2: dat jos ratusca de pe carusel
-//          todo  task 3: parcat in patrat/warehouse
+//          todo  task 3: parcat in patrat/warehouse DONE
 }

@@ -66,13 +66,13 @@ public class LinearDriveMode extends LinearOpMode {
 
             if(gamepad1.left_bumper) robot.carousel.spin();
             else robot.carousel.stopSpin();
-
-            if(gamepad1.x) robot.odometrie.coboaraRoti();
-            if(gamepad1.y) robot.odometrie.ridicaRoti();
+//
+//            if(gamepad1.x) robot.odometrie.coboaraRoti();
+//            if(gamepad1.y) robot.odometrie.ridicaRoti();
 
 //            Drive:
 
-             robot.drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x));
+             robot.drive.setDrivePower(new Pose2d(gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x));
         }
     }
 }

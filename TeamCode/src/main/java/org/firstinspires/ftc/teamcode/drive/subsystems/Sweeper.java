@@ -104,7 +104,7 @@ public class Sweeper {
 
         motorBrat.setTargetPosition(1200);
         motorBrat.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorBrat.setPower(0.75);
+        motorBrat.setPower(0.6 );
     }
 
     public void culcatCuva() {

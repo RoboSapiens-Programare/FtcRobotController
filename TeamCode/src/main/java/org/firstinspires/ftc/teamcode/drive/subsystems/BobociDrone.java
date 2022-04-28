@@ -54,9 +54,9 @@ public class BobociDrone {
     public void putereStanga(double speed) {motorStanga.setPower(speed);}
     public void putereDreapta(double speed) {motorDreapta.setPower(speed);}
 
-    public void setMotorPowers(double speedStanga, double speedDreapta){
-        motorStanga.setPower(speedStanga);
-        motorDreapta.setPower(speedDreapta);
+    public void setMotorPowers(double speedStanga, double speedDreapta, double multiplier){
+        motorStanga.setPower(speedStanga / multiplier);
+        motorDreapta.setPower(speedDreapta / multiplier);
     }
 
     public void stop(){
