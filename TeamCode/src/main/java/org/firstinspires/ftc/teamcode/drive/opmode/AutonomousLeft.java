@@ -120,11 +120,11 @@ public class AutonomousLeft extends LinearOpMode {
             case LEFT:
                 mergi(100, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-55));
+                robot.drive.turn(Math.toRadians(-65));
 
                 robot.sweeper.levelOne();
 
-                mergi(300, new Pose2d(-0.7, 0, 0));
+                mergi(350, new Pose2d(-0.7, 0, 0));
 
                 mergi(1000, new Pose2d(0, 0, 0));
 
@@ -138,16 +138,25 @@ public class AutonomousLeft extends LinearOpMode {
 
                 mergi(1000, new Pose2d(0, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-55));
+                robot.drive.turn(Math.toRadians(-95));
+
+                mergi(1000, new Pose2d(0.4, 0, 0));
+                mergi(500, new Pose2d(0.1, 0, 0));
+
+                robot.carousel.spin();
+                mergi(3000, new Pose2d(0, 0, 0));
+                robot.carousel.stopSpin();
+                mergi(750, new Pose2d(0, 0.5, 0));
                 break;
+
             case CENTER:
                 mergi(100, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-55));
+                robot.drive.turn(Math.toRadians(-65));
 
                 robot.sweeper.levelTwo();
 
-                mergi(300, new Pose2d(-0.7, 0, 0));
+                mergi(350, new Pose2d(-0.7, 0, 0));
 
                 mergi(1000, new Pose2d(0, 0, 0));
 
@@ -161,16 +170,26 @@ public class AutonomousLeft extends LinearOpMode {
 
                 mergi(1000, new Pose2d(0, 0, 0));
 
-                robot.drive.turn(Math.toRadians(0));
+                robot.drive.turn(Math.toRadians(-95));
+
+                mergi(1000, new Pose2d(0.4, 0, 0));
+                mergi(500, new Pose2d(0.1, 0, 0));
+
+                robot.carousel.spin();
+                mergi(3000, new Pose2d(0, 0, 0));
+                robot.carousel.stopSpin();
+
+                mergi(750, new Pose2d(0, 0.5, 0));
                 break;
+
             case RIGHT:
+                mergi(150, new Pose2d(-0.7, 0, 0));
+
+                robot.drive.turn(Math.toRadians(-65));
+
                 mergi(100, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-55));
-
-                mergi(100, new Pose2d(-0.7, 0, 0));
-
-                robot.drive.turn(Math.toRadians(-230));
+                robot.drive.turn(Math.toRadians(-215));
 
                 robot.sweeper.levelThree();
 
@@ -186,13 +205,20 @@ public class AutonomousLeft extends LinearOpMode {
 
                 mergi(300, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-90));
+                robot.drive.turn(Math.toRadians(150));
 
                 robot.sweeper.resetCuva();
 
                 mergi(2000, new Pose2d(0, 0, 0));
 
-                robot.drive.turn(Math.toRadians(0));
+                mergi(1200, new Pose2d(0.4, 0, 0));
+                mergi(500, new Pose2d(0.1, 0, 0));
+
+                robot.carousel.spin();
+                mergi(3000, new Pose2d(0, 0, 0));
+                robot.carousel.stopSpin();
+
+                mergi(600, new Pose2d(0, 0.5, 0));
                 break;
         }
 

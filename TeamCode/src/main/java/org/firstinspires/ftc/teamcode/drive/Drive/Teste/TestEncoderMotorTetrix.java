@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.drive.Drive.Teste;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsAnalogOpticalDistanceSensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cCompassSensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
@@ -32,7 +33,8 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //    private ModernRoboticsI2cRangeSensor range;
 //    private DcMotor motor;
 //    private Encoder encoderParalel, encoderPerpendicular;
-    private SampleMecanumDrive sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
+//    private SampleMecanumDrive sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
+    private BNO055IMU imu;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -49,7 +51,8 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //        encoderParalel = new Encoder(hardwareMap.get(DcMotorEx.class, "parallelEncoder"));
 //        encoderPerpendicular = new Encoder(hardwareMap.get(DcMotorEx.class, "perpendicularEncoder"));
-        sampleMecanumDrive.getExternalHeading();
+//        sampleMecanumDrive.getExternalHeading();
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
         waitForStart();
         if (isStopRequested()) return;
 
@@ -72,6 +75,7 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //            telemetry.addData("ticksparal: ", encoderParalel.getCurrentPosition());
 //            telemetry.addData("ticksperp: ", encoderPerpendicular.getCurrentPosition());
 //            telemetry.addData("ticks: ", motor.getCurrentPosition());
+            telemetry.addData("imu: ", imu.getAngularOrientation());
             telemetry.update();
 
         }
