@@ -65,6 +65,7 @@ public class LinearDriveMode extends LinearOpMode {
 //            Carousel:
 
             if(gamepad1.left_bumper) robot.carousel.spin();
+            else if(gamepad1.dpad_up) robot.carousel.reverseSpin();
             else robot.carousel.stopSpin();
 //
 //            if(gamepad1.x) robot.odometrie.coboaraRoti();

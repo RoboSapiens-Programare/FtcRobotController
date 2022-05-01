@@ -20,11 +20,10 @@ import org.firstinspires.ftc.teamcode.drive.localization.OpenCVThread;
 //import org.openftc.easyopencv.OpenCvCameraRotation;
 //import org.openftc.easyopencv.OpenCvInternalCamera;
 
-@Autonomous(name="Autonomie carousel", group = "autonomous")
-public class AutonomousLeft extends LinearOpMode {
+@Autonomous(name="Autonomie carousel blue", group = "autonomous")
+public class AutonomousLeftReverse extends LinearOpMode {
 
     private Robot robot = null;
-    private static final int TURNING_ANGLE = 120;
     private ElapsedTime timer;
     private static final double FOAM_TILE_INCH = 23.6;
 
@@ -51,14 +50,13 @@ public class AutonomousLeft extends LinearOpMode {
         timer = new ElapsedTime();
         telemetry.addData("has initialised", "yes");
         telemetry.update();
-
-           while (robot.isInitialize() && opModeIsActive()) {
-                idle();
-            }
-
-            telemetry.addData(">", "Initialized");
-            telemetry.update();
+        while (robot.isInitialize() && opModeIsActive()) {
+            idle();
         }
+
+        telemetry.addData(">", "Initialized");
+        telemetry.update();
+    }
 
     private void mergi(int maxTime, Pose2d pose2d){
         ElapsedTime elapsedTime = new ElapsedTime();
@@ -76,31 +74,31 @@ public class AutonomousLeft extends LinearOpMode {
         waitForStart();
 
 
-            opencvTimer = new ElapsedTime();
+        opencvTimer = new ElapsedTime();
 
-            opencvTimer.startTime();
+        opencvTimer.startTime();
 
-            timer.startTime();
+        timer.startTime();
 
-            while (opencvTimer.milliseconds() < MAX_MILISECONDS){
-                telemetry.addData("Location: ", openCV.getLocation());
-                telemetry.update();
-                finalLocation = openCV.getLocation();
-            }
+        while (opencvTimer.milliseconds() < MAX_MILISECONDS){
+            telemetry.addData("Location: ", openCV.getLocation());
+            telemetry.update();
+            finalLocation = openCV.getLocation();
+        }
 
-            try {
-                openCV.finalize();
-            }catch (Throwable throwable){
-                throwable.printStackTrace();
-            }
-            timer = new ElapsedTime();
-            timer.startTime();
+        try {
+            openCV.finalize();
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+        }
+        timer = new ElapsedTime();
+        timer.startTime();
 
         switch(finalLocation) {
             case LEFT:
                 mergi(100, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-65));
+                robot.drive.turn(Math.toRadians(65));
 
                 robot.sweeper.levelOne();
 
@@ -118,7 +116,7 @@ public class AutonomousLeft extends LinearOpMode {
 
                 mergi(1000, new Pose2d(0, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-95));
+                robot.drive.turn(Math.toRadians(95));
 
                 mergi(1000, new Pose2d(0.4, 0, 0));
                 mergi(500, new Pose2d(0.1, 0, 0));
@@ -132,7 +130,7 @@ public class AutonomousLeft extends LinearOpMode {
             case CENTER:
                 mergi(100, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-65));
+                robot.drive.turn(Math.toRadians(65));
 
                 robot.sweeper.levelTwo();
 
@@ -150,7 +148,7 @@ public class AutonomousLeft extends LinearOpMode {
 
                 mergi(1000, new Pose2d(0, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-95));
+                robot.drive.turn(Math.toRadians(95));
 
                 mergi(1000, new Pose2d(0.4, 0, 0));
                 mergi(500, new Pose2d(0.1, 0, 0));
@@ -166,11 +164,11 @@ public class AutonomousLeft extends LinearOpMode {
 
                 mergi(100, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-55));
+                robot.drive.turn(Math.toRadians(55));
 
                 mergi(100, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-200));
+                robot.drive.turn(Math.toRadians(200));
 
                 robot.sweeper.levelThree();
 
@@ -186,7 +184,7 @@ public class AutonomousLeft extends LinearOpMode {
 
                 mergi(300, new Pose2d(-0.7, 0, 0));
 
-                robot.drive.turn(Math.toRadians(-80));
+                robot.drive.turn(Math.toRadians(80));
 
                 robot.sweeper.resetCuva();
 
@@ -196,49 +194,5 @@ public class AutonomousLeft extends LinearOpMode {
 
                 break;
         }
-
- //sau 90
-
-        /*timer.reset();
-        timer.startTime();
-
-        while(timer.milliseconds() < parkingDeltaTime / 4){
-            robot.drive.setDrivePower(new Pose2d(-0.7, 0, 0));
-        }robot.drive.setDrivePower(new Pose2d(0, 0, 0));
-
-        timer.reset();
-        timer.startTime();
-
-        while(timer.milliseconds() < 2500){
-            robot.carousel.spin();
-        }robot.carousel.stopSpin();
-
-        robot.drive.turn(Math.toRadians(-10));
-
-        timer.reset();
-        timer.startTime();
-
-        while (timer.milliseconds() < parkingDeltaTime + parkingDeltaTime / 4){
-            telemetry.addData("Se misca pe beat", timer.milliseconds());
-            telemetry.update();
-            robot.drive.setDrivePower(new Pose2d(1, 0, 0));
-        }robot.drive.setDrivePower(new Pose2d(0, 0, 0));*/
-
-//        robot.sweeper.motorCuva.setTargetPosition(200);
-//        robot.sweeper.motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        robot.sweeper.motorCuva.setPower(-0.75);
-//        robot.sweeper.motorCuva.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER );
-//        timer.reset();
-//        timer.startTime();
-
-//        robot.drive.turn(Math.toRadians(-180));
-//        while(timer.milliseconds() < parkingDeltaTime){
-//            telemetry.addData("ho", "matelot");
-//        }
-
     }
-//
-//          todo  task 1: plasat obiect pe shipping hub DONE
-//          todo  task 2: dat jos ratusca de pe carusel
-//          todo  task 3: parcat in patrat/warehouse DONE
 }
