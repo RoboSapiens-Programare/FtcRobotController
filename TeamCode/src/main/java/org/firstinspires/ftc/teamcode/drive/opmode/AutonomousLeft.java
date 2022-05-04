@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.opmode;
+ package org.firstinspires.ftc.teamcode.drive.opmode;
 
 import android.widget.TableRow;
 
@@ -15,6 +15,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.Ratoi;
 import org.firstinspires.ftc.teamcode.drive.Robot;
 import org.firstinspires.ftc.teamcode.drive.localization.OpenCVThread;
+import org.opencv.core.Mat;
 //import org.openftc.easyopencv.OpenCvCamera;
 //import org.openftc.easyopencv.OpenCvCameraFactory;
 //import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -134,6 +135,8 @@ public class AutonomousLeft extends LinearOpMode {
 
                 robot.drive.turn(Math.toRadians(-65));
 
+                mergi(50, new Pose2d(-0.4, 0, 0));
+
                 robot.sweeper.levelTwo();
 
                 mergi(350, new Pose2d(-0.7, 0, 0));
@@ -145,6 +148,8 @@ public class AutonomousLeft extends LinearOpMode {
                 mergi(2000, new Pose2d(0, 0, 0));
 
                 robot.sweeper.stopSweep();
+
+                mergi(70, new Pose2d(0.5, 0, 0));
 
                 robot.sweeper.resetCuva();
 
@@ -174,7 +179,7 @@ public class AutonomousLeft extends LinearOpMode {
 
                 robot.sweeper.levelThree();
 
-                mergi(600, new Pose2d(0.5, 0, 0));
+                mergi(650, new Pose2d(0.5, 0, 0));
 
                 mergi(2000, new Pose2d(0, 0, 0));
 
