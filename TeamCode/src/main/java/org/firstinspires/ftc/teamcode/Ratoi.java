@@ -81,7 +81,7 @@ public class Ratoi extends OpenCvPipeline {
 
             boolean duckLeft = leftValue > PERCENT_COLOR_THRESHOLD;
 //            boolean duckCenter = centerValue > PERCENT_COLOR_THRESHOLD;
-            boolean duckRight = rightValue > PERCENT_COLOR_THRESHOLD;
+            boolean duckCenter = rightValue > PERCENT_COLOR_THRESHOLD;
 
             if(duckLeft) {
                 location = Location.LEFT;
@@ -91,7 +91,7 @@ public class Ratoi extends OpenCvPipeline {
 //                location = Location.CENTER;
 //                //telemetry.addData("Duck Location", "center");
 //            }
-            else if(duckRight) {
+            else if(duckCenter) {
                 location = Location.CENTER;
                 //telemetry.addData("Duck Location", "right");
             }

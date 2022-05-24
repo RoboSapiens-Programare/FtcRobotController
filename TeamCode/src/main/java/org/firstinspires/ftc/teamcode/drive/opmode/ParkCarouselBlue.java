@@ -1,24 +1,16 @@
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-import org.firstinspires.ftc.teamcode.Ratoi;
 import org.firstinspires.ftc.teamcode.drive.Robot;
-import org.firstinspires.ftc.teamcode.drive.localization.OpenCVThread;
 
 @Autonomous(name="ParkCarousel Blue", group = "autonomous")
 public class ParkCarouselBlue extends LinearOpMode {
 
     private Robot robot = null;
     private ElapsedTime timer;
-    private static final double FOAM_TILE_INCH = 23.6;
-
-    //OpenCvCamera webCam;
-
 
     public void initAutonomous() {
         telemetry.addData(">", "Initializing...");

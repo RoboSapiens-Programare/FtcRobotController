@@ -11,6 +11,7 @@ import com.qualcomm.hardware.motors.TetrixMotor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.CompassSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
@@ -23,7 +24,7 @@ import org.firstinspires.ftc.teamcode.util.Encoder;
 
 @TeleOp(name = "tewt encodewr")
 public class TestEncoderMotorTetrix extends LinearOpMode {
-    //    private ModernRoboticsTouchSensor touchSensor;
+//    private ModernRoboticsTouchSensor touchSensor;
 //    private DistanceSensor distanceSensor;
 //    private ColorSensor colorSensor;
 //    private ModernRoboticsI2cIrSeekerSensorV3 modernRoboticsI2cIrSeekerSensorV3;
@@ -31,10 +32,10 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //    private ModernRoboticsAnalogOpticalDistanceSensor ods;
 //    private ModernRoboticsI2cCompassSensor compassSensor;
 //    private ModernRoboticsI2cRangeSensor range;
-//    private DcMotor motor;
-//    private Encoder encoderParalel, encoderPerpendicular;
+//    private DcMotorEx motor;
+    private Encoder encoder;
 //    private SampleMecanumDrive sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
-    private BNO055IMU imu;
+//    private BNO055IMU imu;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -46,13 +47,19 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //        ods = hardwareMap.get(ModernRoboticsAnalogOpticalDistanceSensor.class, "ods");
 //        compassSensor = hardwareMap.get(ModernRoboticsI2cCompassSensor.class, "compass");
 //        range = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "range");
-//        motor = hardwareMap.get(DcMotor.class, "motor");
+//        motor = hardwareMap.get(DcMotorEx.class, "rightRear");
 //        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 //        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//        encoderParalel = new Encoder(hardwareMap.get(DcMotorEx.class, "parallelEncoder"));
-//        encoderPerpendicular = new Encoder(hardwareMap.get(DcMotorEx.class, "perpendicularEncoder"));
+
+        encoder = new Encoder(hardwareMap.get(DcMotorEx.class, "rightRear"));
+
 //        sampleMecanumDrive.getExternalHeading();
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
+
+//        imu = hardwareMap.get(BNO055IMU.class, "imu");
+//        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+//        parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+//        imu.initialize(parameters);
+
         waitForStart();
         if (isStopRequested()) return;
 
@@ -62,12 +69,31 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //            telemetry.addData("color", colorSensor.red());
 //            telemetry.addData("Ma atingi Costica?", touchSensor.isPressed());
 //            telemetry.addData("ir: ", modernRoboticsI2cIrSeekerSensorV3.signalDetected());
-//            telemetry.addData("gyro: ", gyroSensor.getHeading());
+
+//            gyroSensor.calibrate();
+//            telemetry.addData("gyro calibration status: ", gyroSensor.isCalibrating());
+//            gyroSensor.setHeadingMode(ModernRoboticsI2cGyro.HeadingMode.HEADING_CARTESIAN);
+//            telemetry.addData("gyro measurement mode: ", gyroSensor.getMeasurementMode());
+//            telemetry.addData("gyro heading mode: ", gyroSensor.getHeadingMode());
+//            telemetry.addData("status: ", gyroSensor.status());
+//            telemetry.addData("gyro X: ", gyroSensor.rawX());
+//            telemetry.addData("gyro Y: ", gyroSensor.rawY());
+//            telemetry.addData("gyro Z: ", gyroSensor.rawZ());
+
 //            telemetry.addData("ods light: ", ods.getLightDetected());
 //            telemetry.addData("ods raw light: ", ods.getRawLightDetected());
 //            telemetry.addData("ods maxvoltage: ", ods.getMaxVoltage());
 //            telemetry.addData("ods raw light max: ", ods.getRawLightDetectedMax());
-//            telemetry.addData("compass: ", compassSensor.getMagneticFlux());
+
+//            compassSensor.setMode(CompassSensor.CompassMode.CALIBRATION_MODE);
+//            if (gamepad1.a) compassSensor.setMode(CompassSensor.CompassMode.MEASUREMENT_MODE);
+//
+//            telemetry.addData("compass status: ", compassSensor.status());
+//            telemetry.addData("compass calibration status: ", compassSensor.isCalibrating());
+//            telemetry.addData("", compassSensor.calibrationFailed());
+//            telemetry.addData("compass direction: ", compassSensor.getDirection());
+//            telemetry.addData("compass flux: ", compassSensor.getMagneticFlux());
+
 //            telemetry.addData("range ultrasonic: ", range.rawUltrasonic());
 //            telemetry.addData("range ultrasonic cm : ", range.cmUltrasonic());
 //            telemetry.addData("range light: ", range.rawOptical());
@@ -75,7 +101,14 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //            telemetry.addData("ticksparal: ", encoderParalel.getCurrentPosition());
 //            telemetry.addData("ticksperp: ", encoderPerpendicular.getCurrentPosition());
 //            telemetry.addData("ticks: ", motor.getCurrentPosition());
-            telemetry.addData("imu: ", imu.getAngularOrientation());
+
+//            telemetry.addData("imu: ", imu.isGyroCalibrated());
+//            telemetry.addData("imu: ", imu.getCalibrationStatus());
+//            telemetry.addData("imu: ", imu.getPosition());
+//            telemetry.addData("imu: ", imu.getSystemStatus());
+//            telemetry.addData("imu: ", imu.getAngularOrientation());
+
+            telemetry.addData("Encoder ticks: ", encoder.getCurrentPosition());
             telemetry.update();
 
         }

@@ -10,13 +10,6 @@ import org.firstinspires.ftc.teamcode.Ratoi;
 import org.firstinspires.ftc.teamcode.drive.Robot;
 import org.firstinspires.ftc.teamcode.drive.localization.OpenCVThread;
 
-//import org.firstinspires.ftc.teamcode.drive.PoseStorage;
-//import org.firstinspires.ftc.teamcode.drive.Subsystem;
-//import org.openftc.easyopencv.OpenCvCamera;
-//import org.openftc.easyopencv.OpenCvCameraFactory;
-//import org.openftc.easyopencv.OpenCvCameraRotation;
-//import org.openftc.easyopencv.OpenCvInternalCamera;
-
 @Autonomous(name="Autonomie warehouse blue", group = "autonomous")
 public class AutonomousRightReverse extends LinearOpMode {
 
@@ -72,9 +65,7 @@ public class AutonomousRightReverse extends LinearOpMode {
         waitForStart();
 
         opencvTimer = new ElapsedTime();
-
         opencvTimer.startTime();
-
         timer.startTime();
 
         while (opencvTimer.milliseconds() < MAX_MILISECONDS) {
@@ -92,84 +83,63 @@ public class AutonomousRightReverse extends LinearOpMode {
         timer = new ElapsedTime();
         timer.startTime();
 
-        //mergi(10000, new Pose2d(0, 0, 0));
-
         switch (finalLocation) {
             case LEFT:
+                //Initial movement:
                 mergi(100, new Pose2d(-0.7, 0, 0));
-
                 robot.drive.turn(Math.toRadians(-55));
-
                 robot.sweeper.levelOne();
-
                 mergi(300, new Pose2d(-0.7, 0, 0));
-
                 mergi(1000, new Pose2d(0, 0, 0));
 
+                //Deploy freight:
                 robot.sweeper.outtake();
-
                 mergi(2000, new Pose2d(0, 0, 0));
-
                 robot.sweeper.stopSweep();
-
                 robot.sweeper.resetCuva();
 
+                //Parking:
                 robot.drive.turn(Math.toRadians(160));
-
                 mergi(750, new Pose2d(-1, 0, 0));
                 break;
             case CENTER:
+                //Initial movement:
                 mergi(100, new Pose2d(-0.7, 0, 0));
-
                 robot.drive.turn(Math.toRadians(-55));
-
                 robot.sweeper.levelTwo();
-
                 mergi(300, new Pose2d(-0.7, 0, 0));
-
                 mergi(1000, new Pose2d(0, 0, 0));
 
+                //Deploy freight:
                 robot.sweeper.outtake();
-
                 mergi(2000, new Pose2d(0, 0, 0));
-
                 robot.sweeper.stopSweep();
-
                 robot.sweeper.resetCuva();
 
+                //Parking:
                 robot.drive.turn(Math.toRadians(160));
-
                 mergi(750, new Pose2d(-1, 0, 0));
                 break;
             case RIGHT:
+                //Initial movement:
                 mergi(100, new Pose2d(-0.7, 0, 0));
-
                 robot.drive.turn(Math.toRadians(-55));
-
                 mergi(100, new Pose2d(-0.7, 0, 0));
-
                 robot.drive.turn(Math.toRadians(-200));
-
                 robot.sweeper.levelThree();
-
                 mergi(600, new Pose2d(0.5, 0, 0));
-
                 mergi(2000, new Pose2d(0, 0, 0));
 
+                //Deploy freight:
                 robot.sweeper.intake();
-
                 mergi(2000, new Pose2d(0, 0, 0));
-
                 robot.sweeper.stopSweep();
-
                 mergi(300, new Pose2d(-0.7, 0, 0));
-
                 robot.drive.turn(Math.toRadians(-80));
-
                 robot.sweeper.resetCuva();
-
                 mergi(1000, new Pose2d(0, 0, 0));
 
+                //Parking:
                 mergi(700, new Pose2d(-1, 0, 0));
                 break;
         }

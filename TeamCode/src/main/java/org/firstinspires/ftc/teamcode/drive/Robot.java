@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.drive.subsystems.MecanumDriveCh;
 import org.firstinspires.ftc.teamcode.drive.subsystems.Carousel;
-import org.firstinspires.ftc.teamcode.drive.subsystems.Odometrie;
 import org.firstinspires.ftc.teamcode.drive.subsystems.Sweeper;
 
 public class Robot {
