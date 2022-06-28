@@ -56,7 +56,8 @@ public class Sweeper {
         motorBrat.setPower(-0.2);
     }
 
-    public void levelOne(){ 
+    public void levelOne(){
+        motorCuva.setTargetPosition(950);
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorCuva.setPower(-0.5);
 

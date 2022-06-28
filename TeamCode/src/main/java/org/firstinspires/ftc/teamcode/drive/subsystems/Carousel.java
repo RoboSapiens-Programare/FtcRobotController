@@ -15,15 +15,15 @@ public class Carousel {
         carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
-    public void spin(){
+    public void startCarousel(){
         carousel.setPower(-0.55);
     }
 
-    public void reverseSpin(){
+    public void startCarouselReverse(){
         carousel.setPower(0.55);
     }
 
-    public void stopSpin(){
+    public void stopCarousel(){
         carousel.setPower(0);
     }
 }
