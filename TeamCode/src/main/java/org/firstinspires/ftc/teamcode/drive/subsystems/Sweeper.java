@@ -34,9 +34,15 @@ public class Sweeper {
     public void outtake(){
         motorSweeper.setPower(-1);
     }
-    public void sweepIn() { motorSweeper.setPower(0.7); }
-    public void sweepOut() { motorSweeper.setPower(-0.5); }
-    public void stopSweep(){ motorSweeper.setPower(0); }
+    public void sweepIn() {
+        motorSweeper.setPower(0.7);
+    }
+    public void sweepOut() {
+        motorSweeper.setPower(-0.5);
+    }
+    public void stopSweep(){
+        motorSweeper.setPower(0);
+    }
 
     public void bratUp(){
         motorBrat.setTargetPosition(950);
@@ -50,8 +56,7 @@ public class Sweeper {
         motorBrat.setPower(-0.2);
     }
 
-    public void levelOne(){
-        motorCuva.setTargetPosition(910);
+    public void levelOne(){ 
         motorCuva.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorCuva.setPower(-0.5);
 
