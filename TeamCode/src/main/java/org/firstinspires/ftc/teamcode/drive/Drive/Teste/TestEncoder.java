@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.drive.Drive.Teste;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsAnalogOpticalDistanceSensor;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cCompassSensor;
@@ -20,10 +21,11 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.drive.mechanumSamples.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.subsystems.MecanumDriveCh;
 import org.firstinspires.ftc.teamcode.util.Encoder;
 
 @TeleOp(name = "tewt encodewr")
-public class TestEncoderMotorTetrix extends LinearOpMode {
+public class TestEncoder extends LinearOpMode {
 //    private ModernRoboticsTouchSensor touchSensor;
 //    private DistanceSensor distanceSensor;
 //    private ColorSensor colorSensor;
@@ -33,12 +35,16 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //    private ModernRoboticsI2cCompassSensor compassSensor;
 //    private ModernRoboticsI2cRangeSensor range;
 //    private DcMotorEx motor;
-    private Encoder encoder;
+    private Encoder encoder0;
+    private Encoder encoder1;
+    private Encoder encoder2;
+    private Encoder encoder3;
 //    private SampleMecanumDrive sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
 //    private BNO055IMU imu;
 
     @Override
     public void runOpMode() throws InterruptedException {
+        MecanumDriveCh drive = new MecanumDriveCh(hardwareMap);
 //        distanceSensor = hardwareMap.get(DistanceSensor.class, "distanceSensor");
 //        touchSensor = hardwareMap.get(ModernRoboticsTouchSensor.class, "touchSensor");
 //        colorSensor = hardwareMap.get(ColorSensor.class, "coloSensor");
@@ -51,7 +57,10 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 //        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        encoder = new Encoder(hardwareMap.get(DcMotorEx.class, "rightRear"));
+        encoder0 = new Encoder(hardwareMap.get(DcMotorEx.class, "leftFront"));
+        encoder1 = new Encoder(hardwareMap.get(DcMotorEx.class, "rightFront"));
+        encoder2 = new Encoder(hardwareMap.get(DcMotorEx.class, "leftRear"));
+        encoder3 = new Encoder(hardwareMap.get(DcMotorEx.class, "rightRear"));
 
 //        sampleMecanumDrive.getExternalHeading();
 
@@ -64,6 +73,7 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
+            drive.setDrivePower(new Pose2d(-gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x));
 //            telemetry.addData("range sensor: ", distanceSensor.getDistance(DistanceUnit.CM));
 //            telemetry.addData("range sensor: ", touchSensor.getValue());
 //            telemetry.addData("color", colorSensor.red());
@@ -108,7 +118,10 @@ public class TestEncoderMotorTetrix extends LinearOpMode {
 //            telemetry.addData("imu: ", imu.getSystemStatus());
 //            telemetry.addData("imu: ", imu.getAngularOrientation());
 
-            telemetry.addData("Encoder ticks: ", encoder.getCurrentPosition());
+            telemetry.addData("Encoder ticks: ", encoder0.getCurrentPosition());
+            telemetry.addData("Encoder ticks: ", encoder1.getCurrentPosition());
+            telemetry.addData("Encoder ticks: ", encoder2.getCurrentPosition());
+            telemetry.addData("Encoder ticks: ", encoder3.getCurrentPosition());
             telemetry.update();
 
         }
