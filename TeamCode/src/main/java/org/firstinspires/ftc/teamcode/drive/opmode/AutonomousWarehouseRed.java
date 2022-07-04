@@ -69,7 +69,6 @@ public class AutonomousWarehouseRed extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         initAutonomous();
-        waitForStart();
 
         opencvTimer = new ElapsedTime();
         opencvTimer.startTime();
@@ -87,8 +86,7 @@ public class AutonomousWarehouseRed extends LinearOpMode {
             throwable.printStackTrace();
         }
 
-        timer = new ElapsedTime();
-        timer.startTime();
+        waitForStart();
 
         switch(finalLocation) {
             case LEFT:

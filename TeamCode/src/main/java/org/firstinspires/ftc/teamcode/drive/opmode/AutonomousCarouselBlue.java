@@ -68,7 +68,6 @@ public class AutonomousCarouselBlue extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         initAutonomous();
-        waitForStart();
 
         opencvTimer = new ElapsedTime();
         opencvTimer.startTime();
@@ -85,8 +84,7 @@ public class AutonomousCarouselBlue extends LinearOpMode {
         }catch (Throwable throwable){
             throwable.printStackTrace();
         }
-        timer = new ElapsedTime();
-        timer.startTime();
+        waitForStart();
 
         switch(finalLocation) {
             case LEFT:
@@ -109,13 +107,13 @@ public class AutonomousCarouselBlue extends LinearOpMode {
                 mergi(1000, new Pose2d(-0.4, 0, 0));
                 mergi(500, new Pose2d(-0.1, 0, 0));
                 robot.drive.turn(Math.toRadians(-140));
-                mergi(500, new Pose2d(-0.4, 0, 0));
+                mergi(300, new Pose2d(-0.3, 0, 0));
                 robot.carousel.startCarouselReverse();
                 mergi(3000, new Pose2d(0, 0, 0));
                 robot.carousel.stopCarousel();
 
                 //Parking:
-                mergi(100, new Pose2d(0.7, 0, 0));
+                mergi(200, new Pose2d(0.7, 0, 0));
                 break;
 
             case CENTER:
@@ -135,16 +133,16 @@ public class AutonomousCarouselBlue extends LinearOpMode {
                 //Carousel:
                 mergi(1000, new Pose2d(0, 0, 0));
                 robot.drive.turn(Math.toRadians(95));
-                mergi(1000, new Pose2d(-0.4, 0, 0));
+                mergi(1000, new Pose2d(-0.3, 0, 0));
                 mergi(500, new Pose2d(-0.1, 0, 0));
                 robot.drive.turn(Math.toRadians(-140));
-                mergi(500, new Pose2d(-0.4, 0, 0));
+                mergi(300, new Pose2d(-0.4, 0, 0));
                 robot.carousel.startCarouselReverse();
                 mergi(3000, new Pose2d(0, 0, 0));
                 robot.carousel.stopCarousel();
 
                 //Parking:
-                mergi(100, new Pose2d(0.7, 0, 0));
+                mergi(200, new Pose2d(0.7, 0, 0));
                 break;
 
             case RIGHT:

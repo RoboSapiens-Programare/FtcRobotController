@@ -64,7 +64,6 @@ public class AutonomousCarouselRed extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         initAutonomous();
-        waitForStart();
         opencvTimer = new ElapsedTime();
         opencvTimer.startTime();
         timer.startTime();
@@ -80,8 +79,7 @@ public class AutonomousCarouselRed extends LinearOpMode {
         }catch (Throwable throwable){
             throwable.printStackTrace();
         }
-        timer = new ElapsedTime();
-        timer.startTime();
+        waitForStart();
 
         switch(finalLocation) {
             case LEFT:
@@ -100,7 +98,7 @@ public class AutonomousCarouselRed extends LinearOpMode {
 
                 //Carousel
                 mergi(1000, new Pose2d(0, 0, 0));
-                robot.drive.turn(Math.toRadians(-95));
+                robot.drive.turn(Math.toRadians(-80));
                 mergi(1000, new Pose2d(-0.4, 0, 0));
                 mergi(500, new Pose2d(-0.1, 0, 0));
                 robot.carousel.startCarousel();
@@ -129,7 +127,7 @@ public class AutonomousCarouselRed extends LinearOpMode {
 
                 //Carousel:
                 mergi(1000, new Pose2d(0, 0, 0));
-                robot.drive.turn(Math.toRadians(-95));
+                robot.drive.turn(Math.toRadians(-80));
                 mergi(1000, new Pose2d(-0.4, 0, 0));
                 mergi(500, new Pose2d(-0.1, 0, 0));
                 robot.carousel.startCarousel();
