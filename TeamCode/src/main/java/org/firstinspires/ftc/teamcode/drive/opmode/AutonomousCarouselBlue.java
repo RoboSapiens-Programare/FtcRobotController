@@ -90,7 +90,7 @@ public class AutonomousCarouselBlue extends LinearOpMode {
             case LEFT:
                 //Initial movement:
                 mergi(100, new Pose2d(0.7, 0, 0));
-                robot.drive.turn(Math.toRadians(65));
+                robot.drive.turn(Math.toRadians(33));
                 robot.sweeper.levelOne();
                 mergi(350, new Pose2d(0.7, 0, 0));
                 mergi(1000, new Pose2d(0, 0, 0));
@@ -103,10 +103,10 @@ public class AutonomousCarouselBlue extends LinearOpMode {
 
                 //Carousel:
                 mergi(1000, new Pose2d(0, 0, 0));
-                robot.drive.turn(Math.toRadians(95));
+                robot.drive.turn(Math.toRadians(50));
                 mergi(1000, new Pose2d(-0.4, 0, 0));
                 mergi(500, new Pose2d(-0.1, 0, 0));
-                robot.drive.turn(Math.toRadians(-140));
+                robot.drive.turn(Math.toRadians(-100));
                 mergi(300, new Pose2d(-0.3, 0, 0));
                 robot.carousel.startCarouselReverse();
                 mergi(3000, new Pose2d(0, 0, 0));
@@ -119,7 +119,7 @@ public class AutonomousCarouselBlue extends LinearOpMode {
             case CENTER:
                 //Initial movement:
                 mergi(100, new Pose2d(0.7, 0, 0));
-                robot.drive.turn(Math.toRadians(65));
+                robot.drive.turn(Math.toRadians(33));
                 robot.sweeper.levelTwo();
                 mergi(350, new Pose2d(0.7, 0, 0));
                 mergi(1000, new Pose2d(0, 0, 0));
@@ -132,10 +132,10 @@ public class AutonomousCarouselBlue extends LinearOpMode {
 
                 //Carousel:
                 mergi(1000, new Pose2d(0, 0, 0));
-                robot.drive.turn(Math.toRadians(95));
+                robot.drive.turn(Math.toRadians(50));
                 mergi(1000, new Pose2d(-0.3, 0, 0));
                 mergi(500, new Pose2d(-0.1, 0, 0));
-                robot.drive.turn(Math.toRadians(-140));
+                robot.drive.turn(Math.toRadians(-100));
                 mergi(300, new Pose2d(-0.4, 0, 0));
                 robot.carousel.startCarouselReverse();
                 mergi(3000, new Pose2d(0, 0, 0));
@@ -148,9 +148,7 @@ public class AutonomousCarouselBlue extends LinearOpMode {
             case RIGHT:
                 //Initial movement:
                 mergi(100, new Pose2d(0.7, 0, 0));
-                robot.drive.turn(Math.toRadians(55));
-                mergi(100, new Pose2d(0.7, 0, 0));
-                robot.drive.turn(Math.toRadians(240));
+                robot.drive.turn(Math.toRadians(200));
                 robot.sweeper.levelThree();
                 mergi(600, new Pose2d(-0.5, 0, 0));
                 mergi(2000, new Pose2d(0, 0, 0));

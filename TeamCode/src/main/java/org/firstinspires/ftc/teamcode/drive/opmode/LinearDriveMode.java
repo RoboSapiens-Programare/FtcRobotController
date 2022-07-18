@@ -4,6 +4,8 @@ import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
 import org.firstinspires.ftc.teamcode.drive.Robot;
 
 
@@ -18,6 +20,7 @@ public class LinearDriveMode extends LinearOpMode {
         telemetry.update();
 
         robot = new Robot(hardwareMap);
+        robot.drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         imuV2 = hardwareMap.get(BNO055IMU.class, "imu");
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();

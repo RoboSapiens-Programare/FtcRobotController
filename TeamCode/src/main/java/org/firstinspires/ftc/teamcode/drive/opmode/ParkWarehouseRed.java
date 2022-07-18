@@ -54,10 +54,11 @@ public class ParkWarehouseRed extends LinearOpMode {
         timer = new ElapsedTime();
         timer.startTime();
 
-        mergi(400, new Pose2d(-0.7, 0, 0));
+        mergi(400, new Pose2d(0.7, 0, 0));
 
-        robot.drive.turn(Math.toRadians(-120));
+        robot.drive.turn(Math.toRadians(-100));
 
-        mergi(800, new Pose2d(-1, 0, 0));
+        mergi(800, new Pose2d(1, 0, 0));
+        mergi(700, new Pose2d(0, -0.5, 0));
     }
 }

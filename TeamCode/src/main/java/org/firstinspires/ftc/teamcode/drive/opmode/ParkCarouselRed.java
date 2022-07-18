@@ -47,10 +47,12 @@ public class ParkCarouselRed extends LinearOpMode {
         timer = new ElapsedTime();
         timer.startTime();
 
-        mergi(100, new Pose2d(-0.7, 0, 0));
+        mergi(100, new Pose2d(0.7, 0, 0));
 
-        robot.drive.turn(Math.toRadians(65));
+        robot.drive.turn(Math.toRadians(50));
 
         mergi(800, new Pose2d(0.4, 0, 0));
+
+        robot.drive.turn(Math.toRadians(-50));
     }
 }

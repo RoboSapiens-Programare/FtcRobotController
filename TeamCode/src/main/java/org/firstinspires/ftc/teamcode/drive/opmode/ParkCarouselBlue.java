@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.drive.Robot;
+import org.opencv.core.Mat;
 
 @Autonomous(name="ParkCarousel Blue", group = "autonomous")
 public class ParkCarouselBlue extends LinearOpMode {
@@ -45,10 +46,17 @@ public class ParkCarouselBlue extends LinearOpMode {
         timer = new ElapsedTime();
         timer.startTime();
 
-        mergi(100, new Pose2d(-0.7, 0, 0));
+        mergi(50, new Pose2d(0.4, 0, 0));
 
-        robot.drive.turn(Math.toRadians(-65));
+        robot.drive.turn(Math.toRadians(-5));
 
-        mergi(700, new Pose2d(-0.4, 0, 0));
+        mergi(800, new Pose2d(0, -0.5, 0));
+
+        robot.carousel.startCarouselReverse();
+        mergi(3000, new Pose2d(0, 0, 0));
+        robot.carousel.stopCarousel();
+
+        mergi(300, new Pose2d(0.5, 0, 0));
+        mergi(400, new Pose2d(0, -0.5, 0));
     }
 }
