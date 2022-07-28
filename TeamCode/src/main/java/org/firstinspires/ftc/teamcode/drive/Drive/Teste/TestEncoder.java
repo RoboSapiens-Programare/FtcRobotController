@@ -34,11 +34,11 @@ public class TestEncoder extends LinearOpMode {
 //    private ModernRoboticsAnalogOpticalDistanceSensor ods;
 //    private ModernRoboticsI2cCompassSensor compassSensor;
 //    private ModernRoboticsI2cRangeSensor range;
-//    private DcMotorEx motor;
-    private Encoder encoder0;
-    private Encoder encoder1;
-    private Encoder encoder2;
-    private Encoder encoder3;
+    private DcMotor motor;
+//    private Encoder encoder0;
+//    private Encoder encoder1;
+//    private Encoder encoder2;
+//    private Encoder encoder3;
 //    private SampleMecanumDrive sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
 //    private BNO055IMU imu;
 
@@ -53,14 +53,14 @@ public class TestEncoder extends LinearOpMode {
 //        ods = hardwareMap.get(ModernRoboticsAnalogOpticalDistanceSensor.class, "ods");
 //        compassSensor = hardwareMap.get(ModernRoboticsI2cCompassSensor.class, "compass");
 //        range = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "range");
-//        motor = hardwareMap.get(DcMotorEx.class, "rightRear");
-//        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-//        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor = hardwareMap.get(DcMotor.class, "motorBrat");
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        encoder0 = new Encoder(hardwareMap.get(DcMotorEx.class, "leftFront"));
-        encoder1 = new Encoder(hardwareMap.get(DcMotorEx.class, "rightFront"));
-        encoder2 = new Encoder(hardwareMap.get(DcMotorEx.class, "leftRear"));
-        encoder3 = new Encoder(hardwareMap.get(DcMotorEx.class, "rightRear"));
+//        encoder0 = new Encoder(hardwareMap.get(DcMotorEx.class, "leftFront"));
+//        encoder1 = new Encoder(hardwareMap.get(DcMotorEx.class, "rightFront"));
+//        encoder2 = new Encoder(hardwareMap.get(DcMotorEx.class, "leftRear"));
+//        encoder3 = new Encoder(hardwareMap.get(DcMotorEx.class, "rightRear"));
 
 //        sampleMecanumDrive.getExternalHeading();
 
@@ -110,7 +110,7 @@ public class TestEncoder extends LinearOpMode {
 //            telemetry.addData("range light cm: ", range.cmOptical());
 //            telemetry.addData("ticksparal: ", encoderParalel.getCurrentPosition());
 //            telemetry.addData("ticksperp: ", encoderPerpendicular.getCurrentPosition());
-//            telemetry.addData("ticks: ", motor.getCurrentPosition());
+            telemetry.addData("ticks: ", motor.getCurrentPosition());
 
 //            telemetry.addData("imu: ", imu.isGyroCalibrated());
 //            telemetry.addData("imu: ", imu.getCalibrationStatus());
@@ -118,10 +118,10 @@ public class TestEncoder extends LinearOpMode {
 //            telemetry.addData("imu: ", imu.getSystemStatus());
 //            telemetry.addData("imu: ", imu.getAngularOrientation());
 
-            telemetry.addData("Encoder ticks: ", encoder0.getCurrentPosition());
-            telemetry.addData("Encoder ticks: ", encoder1.getCurrentPosition());
-            telemetry.addData("Encoder ticks: ", encoder2.getCurrentPosition());
-            telemetry.addData("Encoder ticks: ", encoder3.getCurrentPosition());
+//            telemetry.addData("Encoder ticks: ", encoder0.getCurrentPosition());
+//            telemetry.addData("Encoder ticks: ", encoder1.getCurrentPosition());
+//            telemetry.addData("Encoder ticks: ", encoder2.getCurrentPosition());
+//            telemetry.addData("Encoder ticks: ", encoder3.getCurrentPosition());
             telemetry.update();
 
         }
